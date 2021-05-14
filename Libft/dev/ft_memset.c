@@ -6,11 +6,18 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 06:56:35 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/14 07:06:59 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/05/14 13:07:21 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*memset(void *str, int c, size_t n)
+#include "libft.h"
+
+void	*ft_memset(void *str, int c, size_t n)
 {
-	int	n;
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+		((char *)str)[i++] = (unsigned char)c;
+	return (str);
 }
