@@ -41,12 +41,12 @@ int main()
 	char src[30], dest[30];
 	strcpy(src, "this is a test for memcpy!");
 	strcpy(dest, "hello world!");
-	memcpy(dest, src, 5);
+	memcpy(dest+10, dest, 9);
 	puts(dest);
 
 	strcpy(src, "this is a test for memcpy!");
 	strcpy(dest, "hello world!");
-	ft_memcpy(dest, src, 5);
+	ft_memcpy(dest+10, dest, 9);
 	puts(dest);
 
 	//memmove
