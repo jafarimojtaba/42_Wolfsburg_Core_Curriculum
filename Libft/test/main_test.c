@@ -3,6 +3,7 @@
 #include "../dev/libft.h"
 #include "../dev/ft_memset.c"
 #include "../dev/ft_bzero.c"
+#include "../dev/ft_memcpy.c"
 
 int main()
 {
@@ -14,7 +15,7 @@ int main()
 	memset(str, '$', 7);
 	printf("original function : ");
 	puts(str);
-	// ft_memset
+
 	strcpy(str, "this is a test for memset!");
 	ft_memset(str, '$', 7);
 	printf("recreated function: ");
@@ -28,12 +29,27 @@ int main()
 	bzero(str, 7);
 	printf("original function : ");
 	puts(str);
-	// ft_bzero
-	strcpy(str, "this is a test for memset!");
+
+	strcpy(str, "this is a test for bzero!");
 	ft_bzero(str, 7);
 	printf("recreated function: ");
 	puts(str);
 	puts("");
 
+	// memcpy
+	puts("MEMCPY");
+	char src[30], dest[30];
+	strcpy(src, "this is a test for memcpy!");
+	strcpy(dest, "hello world!");
+	memcpy(dest, src, 5);
+	puts(dest);
+
+	strcpy(src, "this is a test for memcpy!");
+	strcpy(dest, "hello world!");
+	ft_memcpy(dest, src, 5);
+	puts(dest);
+
+	//memmove
+	
 	return (0);
 }
