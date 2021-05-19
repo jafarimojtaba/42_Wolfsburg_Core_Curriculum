@@ -39,14 +39,21 @@ int main()
 	// memcpy
 	puts("MEMCPY");
 	char src[30], dest[30];
+	// int intdest[5];
+	// int intsrc[5] ={25,345,766,1,2};
 	strcpy(src, "this is a test for memcpy!");
-	strcpy(dest, "hello world!");
-	memcpy(dest+10, dest, 9);
+	strcpy(dest, "abcde fghi");
+	memcpy(dest+9, dest, 9 * sizeof(char));
+	// memcpy(intdest,intsrc,5);
 	puts(dest);
 
 	strcpy(src, "this is a test for memcpy!");
-	strcpy(dest, "hello world!");
-	ft_memcpy(dest+10, dest, 9);
+	strcpy(dest, "abcde fghi");
+	// memmove(dest+9, dest, 9 * sizeof(char));
+	
+	ft_memcpy(dest+9, dest, 9 *sizeof(char));
+	// memmove(dest, dest+1, 9 * sizeof(char));
+
 	puts(dest);
 
 	//memmove

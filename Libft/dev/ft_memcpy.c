@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 14:44:15 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/14 21:28:13 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/05/19 11:48:14 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	size_t	i;
 	char	*dest2;
 	char	*src2;
-	char	*temp;
+	size_t	temp[20000];
 
-	temp = (char *)malloc(n);
 	dest2 = (char *)dest;
 	src2 = (char *)src;
 	i = 0;
@@ -31,8 +30,9 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	i =0;
 	while (i < n)
 	{
-		*dest2++ = temp[i++];
+		*dest2++ = temp[i];
+		ft_bzero(&temp[i],1);
+		i++;
 	}
-	free(temp);
 	return (dest2);
 }
