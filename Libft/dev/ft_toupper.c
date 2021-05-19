@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/14 14:10:27 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/19 17:15:09 by mjafari          ###   ########.fr       */
+/*   Created: 2021/05/19 15:37:12 by mjafari           #+#    #+#             */
+/*   Updated: 2021/05/19 15:37:49 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int	ft_toupper(int c)
 {
-	ft_memset(s, 0, n);
+	if (ft_islower(c))
+	{
+		c -= 32;
+	}
+	return (c);
 }

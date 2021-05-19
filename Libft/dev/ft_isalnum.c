@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/14 14:10:27 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/19 17:15:09 by mjafari          ###   ########.fr       */
+/*   Created: 2021/05/19 16:27:51 by mjafari           #+#    #+#             */
+/*   Updated: 2021/05/19 17:43:51 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int	ft_isalnum(int c)
 {
-	ft_memset(s, 0, n);
+	return (ft_isalpha(c) || ft_isdigit(c));
 }
