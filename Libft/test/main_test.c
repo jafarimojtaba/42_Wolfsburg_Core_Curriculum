@@ -6,6 +6,8 @@
 #include "../dev/ft_memcpy.c"
 #include "../dev/ft_memccpy.c"
 #include "../dev/ft_memmove.c"
+#include "../dev/ft_memchr.c"
+#include "../dev/ft_memcmp.c"
 #include "../dev/ft_islower.c"
 #include "../dev/ft_isupper.c"
 #include "../dev/ft_tolower.c"
@@ -24,7 +26,6 @@ int main()
 	memset(str, '$', 7);
 	printf("original function : ");
 	puts(str);
-
 	strcpy(str, "this is a test for memset!");
 	ft_memset(str, '$', 7);
 	printf("recreated function: ");
@@ -57,8 +58,7 @@ int main()
 	puts(dest);
 	puts("");
 
-
-	//memmove
+	// memmove
 	puts("MEMMOVE");
 	strcpy(src, "this is a test for memcpy!");
 	strcpy(dest, "abcde fghi");
@@ -70,7 +70,7 @@ int main()
 	puts(dest);
 	puts("");
 
-	//memccpy
+	// memccpy
 	puts("MEMCCPY");
 	strcpy(src, "ABCDEFGHIJKL");
 	strcpy(dest, "abcdefghijkl");
@@ -81,42 +81,62 @@ int main()
 	strcpy(dest, "abcdefghijkl");
 	ccpy2 = ft_memccpy(dest, src, 'B', 2 * sizeof(char));
 	puts(ccpy2);
+	// printf("%d, %d", sizeof(ccpy2), sizeof(ccpy));
 	puts("");
-	
-	//islower
+
+	// memchr
+	puts("MEMCHR");
+	strcpy(src, "ABCDEFGHIJKL");
+	printf("%s \n", (char *)(memchr(src, 'C', 3)));
+	strcpy(src, "ABCDEFGHIJKL");
+	printf("%s \n", (char *)(ft_memchr(src, 'C', 3)));
+	puts("");
+
+	// memcmp
+	puts("MEMCMP");
+	strcpy(src, "ABCDEFGHIJiKL");
+	strcpy(dest, "ABCDEFGaHIJKL");
+	printf("%d \n", memcmp(src, dest , 12));
+	printf("%d \n", ft_memcmp(src, dest, 12));
+
+	// islower
 	int lower;
 	lower = 'S';
-	printf("%d", ft_islower(lower));
+	// printf("%d", ft_islower(lower));
 	puts("");
 
-	
-	//toupper
+	// tolower
+	puts("TOLOWER");
 	printf("%c", ft_tolower(lower));
-	puts("");
-
-	//tolower
+	puts("\n");
+	
+	// toupper
+	puts("TOUPPER");
 	printf("%c", ft_toupper(lower));
-	puts("");
+	puts("\n");
 
-	//isalpha
+	// isalpha
+	puts("ISALPHA");
 	printf("%d", ft_isalpha(lower));
-	puts("");
+	puts("\n");
 
-	//isprint
+	// isprint
+	puts("ISPRINT");
    	for(int c = 1; c <= 127; ++c)
    	if (ft_isprint(c)!= 0)
     printf("%d ", c);
-	puts("");
+	puts("\n");
 
-
-	//strlen
+	// strlen
+	puts("STRLEN");
 	char nstr[17] ="Hi how are you?";
 	printf("%d", (int)strlen(nstr));
 	puts("");
-
 	printf("%d", (int)ft_strlen(nstr));
-	puts("");
+	puts("\n");
 
+	//
+	puts("ATOI");
 	char stnum[]="  +123";
 	printf("%d", atoi(stnum));
 
