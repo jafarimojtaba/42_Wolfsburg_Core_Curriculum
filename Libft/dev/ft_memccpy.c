@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:27:32 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/22 12:20:58 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/05/22 22:54:18 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void *ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	size_t i;
-	char *src2;
-	char *dest2;
+	size_t			i;
+	unsigned char	*src2;
+	unsigned char	*dest2;
 
-	src2 = (char *)src;
-	dest2 = (char *)dest;
+	src2 = (unsigned char *)src;
+	dest2 = (unsigned char *)dest;
 	i = 0;
 	if (n > 0)
 	{
