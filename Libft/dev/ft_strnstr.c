@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/21 14:38:07 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/22 01:05:14 by mjafari          ###   ########.fr       */
+/*   Created: 2021/05/21 23:20:19 by mjafari           #+#    #+#             */
+/*   Updated: 2021/05/22 00:49:35 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t			i;
-	unsigned char	*s11;
-	unsigned char	*s22;
+	size_t	i;
 
-	i = 0;
-	s11 = (unsigned char *)s1;
-	s22 = (unsigned char *)s2;
-	if (n == 0)
-		return (0);
-	while (i < n && s11[i] == s22[i])
+	if (*little == 0)
+		return ((char *)big);
+	while (*big++)
 	{
-		i++;
+		i = 0;
+		if (*big == *little)
+		{
+			while (i < len && big[i] && little[i])
+			{
+				if (big[i] != little[i])
+					break ;
+				i++;
+			}
+			if (little[i] == 0 || i == len)
+				return ((char *)big);
+		}
 	}
-	return (s11[i] - s22[i]);
+	return (0);
 }
