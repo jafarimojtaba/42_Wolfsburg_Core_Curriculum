@@ -16,6 +16,9 @@
 #include "../dev/ft_strchr.c"
 #include "../dev/ft_strrchr.c"
 #include "../dev/ft_strnstr.c"
+#include "../dev/ft_strncmp.c"
+#include "../dev/ft_atoi.c"
+#include "../dev/ft_isspace.c"
 #include "../dev/ft_islower.c"
 #include "../dev/ft_isupper.c"
 #include "../dev/ft_tolower.c"
@@ -151,8 +154,14 @@ int main()
 	// ptr = strnstr(largestring, smallstring, 4);
 	// puts(ptr);
 	ptr = ft_strnstr(largestring, smallstring, 2);
-	printf("%s \n",ptr);
-
+	printf("%s \n\n",ptr);
+	
+	// strncmp
+	puts("STRNCMP");
+	strcpy(src, "ABCDEFGHIJiKL");
+	strcpy(dest, "ABCDEFGaHIJKL");
+	printf("%d \n", strncmp(src, dest, 15));
+	printf("%d \n\n", ft_strncmp(src, dest, 15));
 	// islower
 	int lower;
 	lower = 'S';
@@ -183,8 +192,10 @@ int main()
 
 	//
 	puts("ATOI");
-	char stnum[] = "  +123";
-	printf("%d", atoi(stnum));
+	char stnum[] = "  \n\v\t\r\f\n\v\t\r\f-15 3";
+	printf("%d\n", atoi(stnum));
+	char stnum2[] = "  \n\v\t\r\f\n\v\t\r\f-15 3";
+	printf("%d\n", ft_atoi(stnum2));
 
 	return (0);
 }

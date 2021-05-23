@@ -6,13 +6,13 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:27:32 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/22 22:54:18 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/05/22 23:12:15 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memccpy(void *dest, const void *src, int c, size_t n)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
 	size_t			i;
 	unsigned char	*src2;

@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/14 14:44:15 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/22 23:12:04 by mjafari          ###   ########.fr       */
+/*   Created: 2021/05/22 22:58:26 by mjafari           #+#    #+#             */
+/*   Updated: 2021/05/22 23:11:22 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t			i;
-	unsigned char	*dest2;
-	unsigned char	*src2;
-	size_t			temp[20000];
+	char	*s11;
+	char	*s22;
+	size_t	i;
 
-	dest2 = (unsigned char *)dest;
-	src2 = (unsigned char *)src;
+	s11 = (char *)s1;
+	s22 = (char *)s2;
 	i = 0;
-	while (i < n)
-	{
-		temp[i] = src2[i];
+	while (i < n && s11[i] == s22[i] && s11[i] && s22[i])
 		i++;
-	}
-	i = 0;
-	while (i < n)
-	{
-		*dest2++ = temp[i];
-		ft_bzero(&temp[i], 1);
-		i++;
-	}
-	return (dest2);
+	return ((int)(s11[i] - s22[i]));
 }

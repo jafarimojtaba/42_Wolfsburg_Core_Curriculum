@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/14 14:44:15 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/22 23:12:04 by mjafari          ###   ########.fr       */
+/*   Created: 2021/05/22 23:17:41 by mjafari           #+#    #+#             */
+/*   Updated: 2021/05/23 01:54:12 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int	ft_atoi(const char *nptr)
 {
-	size_t			i;
-	unsigned char	*dest2;
-	unsigned char	*src2;
-	size_t			temp[20000];
+	int	sign;
+	int	result;
 
-	dest2 = (unsigned char *)dest;
-	src2 = (unsigned char *)src;
-	i = 0;
-	while (i < n)
+	sign = 1;
+	result = 0;
+	while (ft_isspace(*nptr++))
 	{
-		temp[i] = src2[i];
-		i++;
 	}
-	i = 0;
-	while (i < n)
+	if (nptr[-1] == '-' || nptr[-1] == '+')
 	{
-		*dest2++ = temp[i];
-		ft_bzero(&temp[i], 1);
-		i++;
+		if (nptr[-1] == '-')
+			sign = -1 ;
 	}
-	return (dest2);
+	while (*nptr >= '0' && *nptr <= '9')
+	{
+		result = result * 10 + (*nptr++ - '0');
+	}
+	return (result * sign);
 }
