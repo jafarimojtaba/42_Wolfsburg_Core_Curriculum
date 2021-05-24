@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:05:17 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/21 19:21:50 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/05/24 15:05:54 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

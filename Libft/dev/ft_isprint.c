@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:44:22 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/19 17:17:15 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/05/24 15:04:17 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

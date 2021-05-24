@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 18:15:02 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/21 19:21:24 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/05/24 15:05:49 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

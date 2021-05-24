@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/22 23:17:41 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/24 01:03:21 by mjafari          ###   ########.fr       */
+/*   Created: 2021/05/24 15:02:37 by mjafari           #+#    #+#             */
+/*   Updated: 2021/05/24 15:02:41 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

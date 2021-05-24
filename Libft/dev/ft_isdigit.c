@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:16:45 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/19 17:17:40 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/05/24 15:04:05 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

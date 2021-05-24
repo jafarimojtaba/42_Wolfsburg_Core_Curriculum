@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:27:51 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/19 17:43:51 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/05/24 15:03:48 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

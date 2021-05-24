@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjafari <mjafari@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:38:58 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/19 16:55:34 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/05/24 15:04:00 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
