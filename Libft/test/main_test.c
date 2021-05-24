@@ -192,10 +192,12 @@ int main()
 
 	//
 	puts("ATOI");
-	char stnum[] = "  \n\v\t\r\f\n\v\t\r\f-15 3";
+	char stnum[] = "  \n\v\t\r\f\n\v\t\r\f+15 3";
 	printf("%d\n", atoi(stnum));
-	char stnum2[] = "  \n\v\t\r\f\n\v\t\r\f-15 3";
+	char stnum2[] = "  \n\v\t\r\f\n\v\t\r\f+15 3";
 	printf("%d\n", ft_atoi(stnum2));
+	printf("%s", stnum2);
+	printf("%s", stnum);
 
 	return (0);
 }
