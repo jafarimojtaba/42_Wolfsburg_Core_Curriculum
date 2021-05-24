@@ -25,6 +25,8 @@
 #include "../dev/ft_toupper.c"
 #include "../dev/ft_isalpha.c"
 #include "../dev/ft_isprint.c"
+#include "../dev/ft_calloc.c"
+#include "../dev/ft_strdup.c"
 
 int main()
 {
@@ -190,14 +192,77 @@ int main()
 			printf("%d ", c);
 	puts("\n");
 
-	//
+	// atoi
 	puts("ATOI");
 	char stnum[] = "  \n\v\t\r\f\n\v\t\r\f+15 3";
 	printf("%d\n", atoi(stnum));
 	char stnum2[] = "  \n\v\t\r\f\n\v\t\r\f+15 3";
 	printf("%d\n", ft_atoi(stnum2));
 	printf("%s", stnum2);
-	printf("%s", stnum);
+	printf("%s\n", stnum);
+
+	// calloc
+	int *ptr1;
+	ptr1 = calloc(1 , 2147483647);
+	ptr1[0] = 2147483647;
+	char * str3 = "Hi how are you";
+	printf("%p	ptr1	", ptr1);
+	printf("%d\n", *ptr1);
+
+	printf("%p	ptr1+1	", ptr1+1);
+	printf("%d\n", *(ptr1+1));
+
+	printf("%p	ptr1+2	", ptr1+2);
+	printf("%d\n", *(ptr1+2));
+
+	printf("%p	ptr1+3	", ptr1+3);
+	printf("%d\n", *(ptr1+3));
+
+	printf("%p	ptr1+4	", ptr1+4);
+	printf("%d\n", *(ptr1+4));
+
+	printf("%p	str3	", str3);
+	printf("%s\n", str3);
+
+	printf("%p	ptr1	", ptr1);
+	printf("%d\n", *ptr1);
+
+	printf("%p	ptr1+1	", ptr1+1);
+	printf("%d\n", *(ptr1+1));
+
+	printf("%p	ptr1+2	", ptr1+2);
+	printf("%d\n", *(ptr1+2));
+
+	printf("%p	ptr1+3	", ptr1+3);
+	printf("%d\n", *(ptr1+3));
+
+	printf("%p	ptr1+4	", ptr1+4);
+	printf("%d\n", *(ptr1+4));
+
+	// ft_calloc
+	char *ptr2;
+	ptr2 = ft_calloc(1, 2);
+
+	printf("%p	ptr2	", ptr2);
+	printf("%d\n", *ptr2);
+
+	printf("%p	ptr2+1	", ptr2+1);
+	printf("%d\n", *(ptr2+1));
+
+	printf("%p	ptr2+2	", ptr2+2);
+	printf("%d\n", *(ptr2+2));
+
+	printf("%p	ptr2+3	", ptr2+3);
+	printf("%d\n", *(ptr2+3));
+
+	printf("%p	ptr2+4	", ptr2+4);
+	printf("%d\n", *(ptr2+4));
+
+	//strdup
+	char *mystr, *yourstr;
+	mystr = "hi how are you";
+	yourstr = ft_strdup(mystr);
+	printf("%s\n",yourstr);
 
 	return (0);
 }
