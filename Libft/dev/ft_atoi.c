@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 15:02:37 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/24 15:02:41 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/05/25 12:21:01 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,27 @@
 
 int	ft_atoi(const char *nptr)
 {
+	int	i;
 	int	sign;
 	int	result;
 
+	i = 0;
 	sign = 1;
 	result = 0;
-	while (ft_isspace(*nptr++))
+	while (ft_isspace(nptr[i]))
 	{
+		i++;
 	}
-	if (nptr[-1] == '-')
-		sign = -1;
-	while (*nptr >= '0' && *nptr <= '9')
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		result = result * 10 + (*nptr++ - '0');
+		if (nptr[i++] == '-')
+		{
+			sign = -1;
+		}
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		result = result * 10 + (nptr[i++] - '0');
 	}
 	return (result * sign);
 }

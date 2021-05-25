@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 14:38:07 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/24 15:04:49 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/05/25 12:57:36 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	{
 		i++;
 	}
+	if (i == n)
+		i--;
 	return ((int)(s11[i] - s22[i]));
 }

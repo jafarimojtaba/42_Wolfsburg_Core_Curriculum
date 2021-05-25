@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:46:25 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/24 15:05:08 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/05/25 03:19:17 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		ft_bzero(&temp[i], 1);
 		i++;
 	}
-	return (dest2);
+	return (dest);
 }
