@@ -3,30 +3,6 @@
 #include <bsd/string.h>
 #include <stdlib.h>
 #include "../dev/libft.h"
-#include "../dev/ft_memset.c"
-#include "../dev/ft_bzero.c"
-#include "../dev/ft_memcpy.c"
-#include "../dev/ft_memccpy.c"
-#include "../dev/ft_memmove.c"
-#include "../dev/ft_memchr.c"
-#include "../dev/ft_memcmp.c"
-#include "../dev/ft_strlen.c"
-#include "../dev/ft_strlcpy.c"
-#include "../dev/ft_strlcat.c"
-#include "../dev/ft_strchr.c"
-#include "../dev/ft_strrchr.c"
-#include "../dev/ft_strnstr.c"
-#include "../dev/ft_strncmp.c"
-#include "../dev/ft_atoi.c"
-#include "../dev/ft_isspace.c"
-#include "../dev/ft_islower.c"
-#include "../dev/ft_isupper.c"
-#include "../dev/ft_tolower.c"
-#include "../dev/ft_toupper.c"
-#include "../dev/ft_isalpha.c"
-#include "../dev/ft_isprint.c"
-#include "../dev/ft_calloc.c"
-#include "../dev/ft_strdup.c"
 
 int main()
 {
@@ -98,10 +74,11 @@ int main()
 
 	// memchr
 	puts("MEMCHR");
-	strcpy(src, "ABCDEFGHIJKL");
-	printf("%s \n", (char *)(memchr(src, 'c', 3)));
-	strcpy(src, "ABCDEFGHIJKL");
-	printf("%s \n", (char *)(ft_memchr(src, 'c', 3)));
+	printf("%s \n", (char *)(memchr("bonjour", 'b', 4)));
+	printf("%s \n", (char *)(ft_memchr("bonjour", 'b', 4)));
+	int tab[7] = {-49, 49, 1, -1, 0, -2, 2};
+	printf("%s\n", (char *)memchr(tab, -1, 7));
+	printf("%s\n", (char *)ft_memchr(tab, -1, 7));
 	puts("");
 
 	// memcmp
@@ -109,7 +86,9 @@ int main()
 	strcpy(src, "ABCDEFGHIJiKL");
 	strcpy(dest, "ABCDEFGaHIJKL");
 	printf("%d \n", memcmp(src, dest, 0));
-	printf("%d \n\n", ft_memcmp(src, dest, 0));
+	printf("%d \n\n", ft_memcmp(src, dest, 0));	
+	printf("%d \n", memcmp("abcdefghij", "abcdefgxyz", 7));
+	printf("%d \n\n", ft_memcmp("abcdefghij", "abcdefgxyz", 7));
 
 	// strlen
 	puts("STRLEN");
@@ -135,6 +114,9 @@ int main()
 	puts(dest);
 	puts("");
 
+
+	
+
 	// strchr
 	puts("STRCHR");
 	strcpy(src, "ABCdefghijkZlmnoZpkrstuvwxyz");
@@ -156,8 +138,8 @@ int main()
 	// ptr = strnstr(largestring, smallstring, 4);
 	// puts(ptr);
 	ptr = ft_strnstr(largestring, smallstring, 2);
-	printf("%s \n\n",ptr);
-	
+	printf("%s \n\n", ptr);
+
 	// strncmp
 	puts("STRNCMP");
 	strcpy(src, "ABCDEFGHIJiKL");
@@ -194,32 +176,32 @@ int main()
 
 	// atoi
 	puts("ATOI");
-	char stnum[] = "  \n\v\t\r\f\n\v\t\r\f+15 3";
+	char stnum[] = "  \n\v\t\r\f\n\v\t\r\f546:5";
 	printf("%d\n", atoi(stnum));
-	char stnum2[] = "  \n\v\t\r\f\n\v\t\r\f+15 3";
+	char stnum2[] = "  \n\v\t\r\f\n\v\t\r\f546:5";
 	printf("%d\n", ft_atoi(stnum2));
 	printf("%s", stnum2);
 	printf("%s\n", stnum);
 
 	// calloc
 	int *ptr1;
-	ptr1 = calloc(1 , 2147483647);
+	ptr1 = calloc(1, 2147483647);
 	ptr1[0] = 2147483647;
-	char * str3 = "Hi how are you";
+	char *str3 = "Hi how are you";
 	printf("%p	ptr1	", ptr1);
 	printf("%d\n", *ptr1);
 
-	printf("%p	ptr1+1	", ptr1+1);
-	printf("%d\n", *(ptr1+1));
+	printf("%p	ptr1+1	", ptr1 + 1);
+	printf("%d\n", *(ptr1 + 1));
 
-	printf("%p	ptr1+2	", ptr1+2);
-	printf("%d\n", *(ptr1+2));
+	printf("%p	ptr1+2	", ptr1 + 2);
+	printf("%d\n", *(ptr1 + 2));
 
-	printf("%p	ptr1+3	", ptr1+3);
-	printf("%d\n", *(ptr1+3));
+	printf("%p	ptr1+3	", ptr1 + 3);
+	printf("%d\n", *(ptr1 + 3));
 
-	printf("%p	ptr1+4	", ptr1+4);
-	printf("%d\n", *(ptr1+4));
+	printf("%p	ptr1+4	", ptr1 + 4);
+	printf("%d\n", *(ptr1 + 4));
 
 	printf("%p	str3	", str3);
 	printf("%s\n", str3);
@@ -227,17 +209,17 @@ int main()
 	printf("%p	ptr1	", ptr1);
 	printf("%d\n", *ptr1);
 
-	printf("%p	ptr1+1	", ptr1+1);
-	printf("%d\n", *(ptr1+1));
+	printf("%p	ptr1+1	", ptr1 + 1);
+	printf("%d\n", *(ptr1 + 1));
 
-	printf("%p	ptr1+2	", ptr1+2);
-	printf("%d\n", *(ptr1+2));
+	printf("%p	ptr1+2	", ptr1 + 2);
+	printf("%d\n", *(ptr1 + 2));
 
-	printf("%p	ptr1+3	", ptr1+3);
-	printf("%d\n", *(ptr1+3));
+	printf("%p	ptr1+3	", ptr1 + 3);
+	printf("%d\n", *(ptr1 + 3));
 
-	printf("%p	ptr1+4	", ptr1+4);
-	printf("%d\n", *(ptr1+4));
+	printf("%p	ptr1+4	", ptr1 + 4);
+	printf("%d\n", *(ptr1 + 4));
 
 	// ft_calloc
 	char *ptr2;
@@ -246,23 +228,31 @@ int main()
 	printf("%p	ptr2	", ptr2);
 	printf("%d\n", *ptr2);
 
-	printf("%p	ptr2+1	", ptr2+1);
-	printf("%d\n", *(ptr2+1));
+	printf("%p	ptr2+1	", ptr2 + 1);
+	printf("%d\n", *(ptr2 + 1));
 
-	printf("%p	ptr2+2	", ptr2+2);
-	printf("%d\n", *(ptr2+2));
+	printf("%p	ptr2+2	", ptr2 + 2);
+	printf("%d\n", *(ptr2 + 2));
 
-	printf("%p	ptr2+3	", ptr2+3);
-	printf("%d\n", *(ptr2+3));
+	printf("%p	ptr2+3	", ptr2 + 3);
+	printf("%d\n", *(ptr2 + 3));
 
-	printf("%p	ptr2+4	", ptr2+4);
-	printf("%d\n", *(ptr2+4));
+	printf("%p	ptr2+4	", ptr2 + 4);
+	printf("%d\n", *(ptr2 + 4));
 
 	//strdup
 	char *mystr, *yourstr;
 	mystr = "hi how are you";
 	yourstr = ft_strdup(mystr);
-	printf("%s\n",yourstr);
+	printf("%s\n", yourstr);
 
+	printf("%d\n",ft_strncmp("test\200", "test\0",6));
+
+	//strtrim
+	char	set [] = "\t \n";
+	char s1[] = "lorem ipsum dolor sit amet \n \t\n \t  ";
+	char *out;
+	out = ft_strtrim(s1, set);
+	printf("%s$", out);
 	return (0);
 }
