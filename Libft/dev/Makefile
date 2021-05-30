@@ -6,7 +6,7 @@
 #    By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/25 00:07:21 by mjafari           #+#    #+#              #
-#    Updated: 2021/05/28 20:32:05 by mjafari          ###   ########.fr        #
+#    Updated: 2021/05/29 22:46:21 by mjafari          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,20 @@ SRC		=	ft_bzero.c ft_isalnum.c ft_isascii.c ft_islower.c \
 				ft_putstr_fd.c ft_putnbr_fd.c ft_num_count.c ft_putendl_fd.c \
 				ft_strmapi.c
 
+BNC		=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+				ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
+				ft_lstmap.c
+
 all: $(NAME)
 
 $(NAME): clean
 	gcc -c -Wall -Wextra -Werror $(SRC)
+	ar rc $(NAME) *.o
+	ranlib $(NAME)
+	rm -f *.o
+
+bonus: clean
+	gcc -c -Wall -Wextra -Werror $(BNC)
 	ar rc $(NAME) *.o
 	ranlib $(NAME)
 	rm -f *.o

@@ -254,5 +254,21 @@ int main()
 	char *out;
 	out = ft_strtrim(s1, set);
 	printf("%s$", out);
+
+	//split
+	// char *myarray[20];
+	// myarray[0][0] = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
+	// for (size_t i = 0; i < 20; i++)
+	// {
+	// 	printf("%s\n",myarray[i]);
+	// }
+
+	//itoa
+
+	int n = 123456789;
+
+	char s[10];
+	s = ft_itoa(n);
+	
 	return (0);
 }
