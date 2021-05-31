@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <bsd/string.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "../dev/libft.h"
 
 int main()
@@ -265,10 +266,38 @@ int main()
 
 	//itoa
 
-	int n = 123456789;
+	// int n = 123456789;
 
-	char s[10];
-	s = ft_itoa(n);
-	
+	// char s[10];
+	// s = ft_itoa(n);
+	// int i = -1;
+	// puts(" ");
+
+	// while (i < 530)
+	// {
+		
+	// 	if (ft_isalnum(i))
+	// 		printf("%d ,", i);
+	// 		i++;
+	// }
+	// puts(" ");
+	// i = -1;
+	// while (i < 530)
+	// {
+		
+	// 	if (isalnum(i))
+	// 		printf("%d ,", i);
+	// 		i++;
+	// }
+
+	printf("%d",strcmp(ft_strtrim("", ""), ""));
+	// printf("%d",strlen(""));
+	char *str4 = "i just want this part #############";
+	int g;
+	g = (int)strlen(ft_substr(str4, 5, 5));
+	printf(" %d \n", g);
+	printf(" %s \n", ft_substr(str4,5,5));
+	write(3, "hi", 2);
+
 	return (0);
 }

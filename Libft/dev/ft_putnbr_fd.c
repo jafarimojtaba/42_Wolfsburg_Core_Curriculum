@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 19:43:01 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/28 20:12:47 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/05/30 23:11:37 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*s;
+	int		count;
+	long	num;
+	char	str[11];
 
-	s = ft_itoa(n);
-	ft_putstr_fd(s, fd);
-	free(s);
+	num = n;
+	ft_bzero(str, 11);
+	count = ft_num_count(num);
+	ft_putnum(num, count, str);
+	ft_putstr_fd(str, fd);
 }

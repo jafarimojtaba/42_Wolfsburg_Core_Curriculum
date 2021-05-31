@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putnum.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/21 15:05:17 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/31 17:32:28 by mjafari          ###   ########.fr       */
+/*   Created: 2021/05/30 23:02:01 by mjafari           #+#    #+#             */
+/*   Updated: 2021/05/30 23:02:26 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	ft_putnum(long n, int c, char *s)
 {
-	size_t	i;
-
-	if (!src)
-		return (0);
-	i = 0;
-	if (size > 0)
+	if (n < 0)
 	{
-		while (i < size - 1 && src[i])
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = 0;
+		s[0] = '-';
+		n = -n;
+		s++;
+		s[c] = 0;
 	}
-	i = 0;
-	while (src[i])
+	while (--c >= 0)
 	{
-		i++;
+		s[c] = (n % 10) + '0';
+		n = n / 10;
 	}
-	return (i);
 }

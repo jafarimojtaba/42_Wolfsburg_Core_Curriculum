@@ -1,4 +1,5 @@
-#include <stdio.h>>
+#include <stdio.h>
+#include <stdlib.h>
 int	ft_counter(const char *s, int c)
 {
 	int	count;
@@ -32,6 +33,18 @@ int	ft_counter2(const char *s, int c)
 	}
 	return (count);
 }
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	return (i);
+}
+
 int main()
 {
 	int i;
@@ -39,4 +52,5 @@ int main()
 	printf("%d\n", i);
 	i = ft_counter2("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
 	printf("%d\n", i);
+	printf("%ld", ft_strlen(""));
 }

@@ -6,7 +6,7 @@
 #    By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/25 00:07:21 by mjafari           #+#    #+#              #
-#    Updated: 2021/05/29 22:46:21 by mjafari          ###   ########.fr        #
+#    Updated: 2021/05/31 20:10:21 by mjafari          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC		=	ft_bzero.c ft_isalnum.c ft_isascii.c ft_islower.c \
 				ft_strncmp.c ft_strrchr.c ft_toupper.c ft_substr.c \
 				ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_putchar_fd.c \
 				ft_putstr_fd.c ft_putnbr_fd.c ft_num_count.c ft_putendl_fd.c \
-				ft_strmapi.c
+				ft_strmapi.c ft_putnum.c
 
 BNC		=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 				ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
@@ -49,7 +49,10 @@ fclean: clean
 	
 re: fclean all
 
+so: clean
+	gcc -shared -o libft.so *.c
+
 test: $(NAME)
-	gcc -Wall -Werror -Wextra -lbsd ../test/main_test.c -L. -lft
+	gcc -lbsd ../test/main_test.c -L. -lft
 	./a.out
 	@rm -f ./a.out
