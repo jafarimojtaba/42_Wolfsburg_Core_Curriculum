@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 14:15:28 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/31 12:27:17 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/06/01 10:47:21 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ char	*ft_strrchr(const char *s, int c);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_atoi(const char *nptr);
-int		ft_isspace(int c);
-int		ft_islower(int c);
-int		ft_isupper(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_isalpha(int c);
@@ -60,8 +57,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putendl_fd(char *s, int fd);
-int		ft_num_count(long n);
-void	ft_putnum(long n, int c, char *s);
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);

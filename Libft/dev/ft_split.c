@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 23:38:50 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/31 19:59:40 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/06/01 09:47:04 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ static void	ft_putarr(char **new_array, char const *s, char c, int count)
 		if (*s && *s != c)
 		{
 			end = ft_end(s, c);
-			new_array[i++] = ft_substr(s, 0, end);
+			new_array[i] = ft_substr(s, 0, end);
+			if (!new_array[i])
+				free(new_array[i]);
+			i++;
 			s += end;
 		}
 	}
