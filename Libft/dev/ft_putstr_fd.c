@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 19:29:18 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/31 19:57:28 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/06/03 00:43:09 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (!s || fd > 2 || fd < 0)
+	if (!s)
 		return ;
 	while (*s)
 	{

@@ -6,7 +6,7 @@
 #    By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/25 00:07:21 by mjafari           #+#    #+#              #
-#    Updated: 2021/06/01 10:59:24 by mjafari          ###   ########.fr        #
+#    Updated: 2021/06/03 00:41:47 by mjafari          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,30 +27,35 @@ BNC		=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 				ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
 				ft_lstmap.c
 
+SRC_OBJ	=	$(SRC:.c=.o)
+
+BNC_OBJ	=	$(BNC:.c=.o)
+
 all: $(NAME)
 
-$(NAME): clean
-	gcc -c -Wall -Wextra -Werror $(SRC) $(BNC)
-	ar rc $(NAME) *.o
+$(NAME):
+	gcc -c -Wall -Wextra -Werror $(SRC)
+	ar rc $(NAME) $(SRC_OBJ)
 	ranlib $(NAME)
 
-bonus: clean
-	gcc -c -Wall -Wextra -Werror $(BNC)
-	ar rc $(NAME) *.o
+bonus:
+	gcc -c -Wall -Wextra -Werror $(BNC) $(SRC)
+	ar rc $(NAME) $(BNC_OBJ) $(SRC_OBJ)
 	ranlib $(NAME)
 
 clean:
-	rm -f *.o
+	rm -f $(SRC_OBJ) $(BNC_OBJ)
 
 fclean: clean
-	rm -f $(NAME)
-	
+	rm -f $(NAME) $(NAME:.a=.so)
+
 re: fclean all
 
-# so: clean
-# 	gcc -shared -o libft.so *.c
+so:
+	gcc -nostartfiles -c -Wall -Wextra -Werror $(SRC) $(BNC)
+	gcc -nostartfiles -shared -o libft.so $(SRC_OBJ) $(BNC_OBJ) 
 
-# test: $(NAME)
-# 	gcc -lbsd ../test/main_test.c -L. -lft
-# 	./a.out
-# 	@rm -f ./a.out
+test: $(NAME) bonus
+	gcc -lbsd ../test/main_test.c -L. -lft
+	./a.out
+	@rm -f ./a.out
