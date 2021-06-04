@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 23:38:50 by mjafari           #+#    #+#             */
-/*   Updated: 2021/06/01 09:47:04 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/06/04 16:45:20 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 static int	ft_counter(const char *s, int c)
 {
 	int	count;
+	int	i;
 
 	count = 1;
-	while (*s)
+	i = 0;
+	while (s[i])
 	{
-		if (*s == c)
+		if (s[i] == c && s[i + 1] != c)
 			count++;
-		s++;
+		i++;
 	}
 	return (count);
 }
@@ -32,7 +34,7 @@ static int	ft_end(const char *s, int c)
 
 	if (!(*s))
 		return (0);
-	i = 1;
+	i = 0;
 	while (s[i])
 	{
 		if (s[i] == c)
@@ -69,11 +71,15 @@ static void	ft_putarr(char **new_array, char const *s, char c, int count)
 char	**ft_split(char const *s, char c)
 {
 	char	**new_array;
+	char	*temp;
+	char	p[1];
 	int		count;
 
 	if (!s || !c)
 		return (0);
-	if (ft_strlen(s) == 0)
+	p[0] = c;
+	temp = ft_strtrim(s, p);
+	if (ft_strlen(temp) == 0)
 	{
 		new_array = (char **)malloc(1 * sizeof(char *));
 		if (!new_array)
@@ -81,11 +87,12 @@ char	**ft_split(char const *s, char c)
 		new_array[0] = 0;
 		return (new_array);
 	}
-	count = ft_counter(s, c);
+	count = ft_counter(temp, c);
 	new_array = (char **)malloc((count + 1) * sizeof(char *));
 	if (!new_array)
 		return (0);
 	new_array[count] = 0;
-	ft_putarr(new_array, s, c, count);
+	ft_putarr(new_array, temp, c, count);
+	free(temp);
 	return (new_array);
 }

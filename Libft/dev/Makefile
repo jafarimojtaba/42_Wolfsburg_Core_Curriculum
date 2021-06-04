@@ -6,7 +6,7 @@
 #    By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/25 00:07:21 by mjafari           #+#    #+#              #
-#    Updated: 2021/06/03 00:41:47 by mjafari          ###   ########.fr        #
+#    Updated: 2021/06/04 14:39:27 by mjafari          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,3 +59,7 @@ test: $(NAME) bonus
 	gcc -lbsd ../test/main_test.c -L. -lft
 	./a.out
 	@rm -f ./a.out
+
+debug: $(NAME) bonus
+	gcc -g -lbsd ../test/main_test.c -L. -lft
+	gdb a.out

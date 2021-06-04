@@ -254,15 +254,15 @@ int main()
 	char s1[] = "lorem ipsum dolor sit amet \n \t\n \t  ";
 	char *out;
 	out = ft_strtrim(s1, set);
-	printf("%s$", out);
+	printf("%s$\n", out);
 
 	//split
-	// char *myarray[20];
-	// myarray[0][0] = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
-	// for (size_t i = 0; i < 20; i++)
-	// {
-	// 	printf("%s\n",myarray[i]);
-	// }
+	char **myarray;
+	myarray = ft_split("      split       this for   me  !       ", ' ');
+	for (size_t i = 0; i < 5; i++)
+	{
+		printf("%s\n",myarray[i]);
+	}
 
 	//itoa
 
@@ -290,14 +290,14 @@ int main()
 	// 		i++;
 	// }
 
-	printf("%d",strcmp(ft_strtrim("", ""), ""));
-	// printf("%d",strlen(""));
-	char *str4 = "i just want this part #############";
-	int g;
-	g = (int)strlen(ft_substr(str4, 5, 5));
-	printf(" %d \n", g);
-	printf(" %s \n", ft_substr(str4,5,5));
-	write(3, "hi", 2);
+	// printf("%d",strcmp(ft_strtrim("", ""), ""));
+	// // printf("%d",strlen(""));
+	// char *str4 = "i just want this part #############";
+	// int g;
+	// g = (int)strlen(ft_substr(str4, 5, 5));
+	// printf(" %d \n", g);
+	// printf(" %s \n", ft_substr(str4,5,5));
+	// write(3, "hi", 2);
 
 	return (0);
 }

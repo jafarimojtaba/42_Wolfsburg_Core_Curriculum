@@ -1,23 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-int	ft_counter(const char *s, int c)
-{
-	int	count;
+#include <bsd/string.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include "../dev/libft.h"
+#include "../dev/ft_strtrim.c"
+#include "../dev/ft_split.c"
+#include "../dev/ft_strlen.c"
+#include "../dev/ft_strlcpy.c"
+#include "../dev/ft_substr.c"
 
-	count = 0;
-	if (!s)
-		return (0);
-	while (*s)
-	{
-		while (*s && *s == c)
-			s++;
-		if (*s)
-			count++;
-		while (*s && *s != c)
-			s++;
-	}
-	return (count);
-}
 int	ft_counter2(const char *s, int c)
 {
 	int	count;
@@ -33,18 +25,6 @@ int	ft_counter2(const char *s, int c)
 	}
 	return (count);
 }
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
 int main()
 {
 	int i;
@@ -53,4 +33,17 @@ int main()
 	i = ft_counter2("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
 	printf("%d\n", i);
 	printf("%ld", ft_strlen(""));
+	char	set [] = "\t \n";
+	char s1[] = "lorem ipsum dolor sit amet \n \t\n \t  ";
+	char *out;
+	out = ft_strtrim(s1, set);
+	printf("%s$\n", out);
+
+	//split
+	char **myarray;
+	myarray = ft_split("      split       this for   me  !       ", ' ');
+	for (size_t i = 0; i < 5; i++)
+	{
+		printf("%s\n",myarray[i]);
+	}
 }
