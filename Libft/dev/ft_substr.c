@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 22:34:48 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/31 19:43:22 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/06/05 09:36:26 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		sub_str = malloc(1 * sizeof(char));
 		if (!sub_str)
 			return (0);
+		sub_str[0] = '\0';
 		return (sub_str);
 	}
 	else
