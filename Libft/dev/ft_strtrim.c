@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:58:59 by mjafari           #+#    #+#             */
-/*   Updated: 2021/06/04 11:53:34 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/06/06 00:11:18 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		new_str[0] = 0;
 		return (new_str);
 	}
-	while (ft_check_c(set, s1[end]) && s1[end])
+	while (ft_check_c(set, s1[end]) && s1[end] && s1[start])
 		end--;
 	new_str = malloc((end - start + 2) * sizeof(char));
 	if (!new_str)
