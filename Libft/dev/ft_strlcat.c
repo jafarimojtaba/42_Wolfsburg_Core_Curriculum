@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 18:15:02 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/25 15:38:16 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/06/05 13:14:53 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 
 	i = ft_strlen(dest);
 	j = ft_strlen(src);
-	if (size < i)
+	if (size < i || size == 0)
 	{
 		return (j + size);
 	}
