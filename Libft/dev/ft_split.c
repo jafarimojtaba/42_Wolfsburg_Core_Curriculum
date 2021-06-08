@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 23:38:50 by mjafari           #+#    #+#             */
-/*   Updated: 2021/06/05 21:11:12 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/06/08 11:09:12 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,32 @@ static int	ft_counter(const char *s, int c)
 	int	count;
 	int	i;
 
-	count = 1;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == c && s[i + 1] != c)
-			count++;
-		i++;
-	}
-	return (count);
-}
-
-static int	ft_end(const char *s, int c)
-{
-	int	i;
-
-	if (!(*s))
-		return (0);
+	count = 0;
 	i = 0;
 	while (s[i])
 	{
 		if (s[i] == c)
+			i++;
+		else
+		{
+			count++;
+			while (s[i] && s[i] != c)
+				i++;
+		}
+	}
+	return (count);
+}
+
+static int	ft_end(const char *s, int k, int c)
+{
+	int	i;
+
+	i = 0;
+	if (!(s[k]))
+		return (0);
+	while (s[k])
+	{
+		if (s[k++] == c)
 			return (i);
 		i++;
 	}
@@ -47,52 +52,39 @@ static int	ft_end(const char *s, int c)
 static void	ft_putarr(char **new_array, char const *s, char c, int count)
 {
 	int	i;
+	int	j;
 	int	end;
 
 	i = 0;
+	j = 0;
 	while (count-- > 0)
 	{
-		while (*s && *s == c)
-			s++;
-		if (*s && *s != c)
+		while (s[j] && s[j] == c)
+			j++;
+		if (s[j] && s[j] != c)
 		{
-			end = ft_end(s, c);
-			new_array[i] = ft_substr(s, 0, end);
+			end = ft_end(s, j, c);
+			new_array[i] = ft_substr(s, j, end);
 			if (!new_array[i])
 				free(new_array[i]);
 			i++;
-			s += end;
+			j += end;
 		}
 	}
-	while (i < count)
-		new_array[i++] = 0;
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**new_array;
-	char	*temp;
-	char	p[1];
 	int		count;
 
-	if (!s || !c)
-		return (0);
-	p[0] = c;
-	temp = ft_strtrim(s, p);
-	if (ft_strlen(temp) == 0)
-	{
-		new_array = (char **)malloc(1 * sizeof(char *));
-		if (!new_array)
-			return (0);
-		new_array[0] = 0;
-		return (new_array);
-	}
-	count = ft_counter(temp, c);
+	if (!s)
+		return (NULL);
+	count = ft_counter(s, c);
 	new_array = (char **)malloc((count + 1) * sizeof(char *));
 	if (!new_array)
-		return (0);
+		return (NULL);
 	new_array[count] = 0;
-	ft_putarr(new_array, temp, c, count);
-	free(temp);
+	ft_putarr(new_array, s, c, count);
 	return (new_array);
 }

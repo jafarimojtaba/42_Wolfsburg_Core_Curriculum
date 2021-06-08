@@ -6,7 +6,7 @@
 #    By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/25 00:07:21 by mjafari           #+#    #+#              #
-#    Updated: 2021/06/06 19:22:22 by mjafari          ###   ########.fr        #
+#    Updated: 2021/06/08 10:01:17 by mjafari          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,8 +55,8 @@ so:
 	gcc -nostartfiles -c -Wall -Wextra -Werror $(SRC) $(BNC)
 	gcc -nostartfiles -shared -o libft.so $(SRC_OBJ) $(BNC_OBJ) 
 
-test: bonus
-	gcc -g ../test/main_test.c -L. -lft -lbsd
+test: re
+	gcc -Wall -Wextra -Werror ../test/main_test.c libft.a -lbsd
 	rm -f $(SRC_OBJ) $(BNC_OBJ)
 	clear
 	./a.out
