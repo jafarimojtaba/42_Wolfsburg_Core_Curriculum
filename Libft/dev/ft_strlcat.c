@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 18:15:02 by mjafari           #+#    #+#             */
-/*   Updated: 2021/06/05 13:14:53 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/06/08 18:16:06 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	{
 		dest[i++] = src[j++];
 	}
-	dest[i] = 0;
+	dest[i] = '\0';
 	return (c);
 }
