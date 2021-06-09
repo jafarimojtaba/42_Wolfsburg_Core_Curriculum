@@ -16,7 +16,7 @@
 // #include "../dev/ft_strlcat.c"
 // #include "../dev/ft_strchr.c"
 // #include "../dev/ft_strrchr.c"
-// // #include "../dev/ft_strnstr.c"
+// #include "../dev/ft_strnstr.c"
 // #include "../dev/ft_strncmp.c"
 // #include "../dev/ft_atoi.c"
 // #include "../dev/ft_tolower.c"
@@ -34,6 +34,44 @@
 // #include "../dev/ft_strtrim.c"
 // #include "../dev/ft_strjoin.c"
 // #include "../dev/ft_substr.c"
+
+// int	ft_cmp(const char *s1, const char *s2)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (s1[i] != '\0')
+// 	{
+// 		if (s1[i] != s2[i])
+// 			return (1);
+// 		i++;
+// 	}
+// 	return (0);
+// }
+
+// char	*ft_strnstr(const char *str, const char *pattern, size_t len)
+// {
+// 	size_t	i;
+// 	size_t	pattern_len;
+
+// 	i = 0;
+// 	if (ft_strlen(str) < len)
+// 		len = ft_strlen(str);
+// 	if (*pattern == 0)
+// 		return ((char *)str);
+// 	if (len == 0 || *str == 0)
+// 		return (0);
+// 	pattern_len = ft_strlen(pattern);
+// 	if (pattern_len > len)
+// 		return (0);
+// 	while (i <= len - pattern_len)
+// 	{
+// 		if (ft_cmp(pattern, str + i) == 0)
+// 			return ((char *)str + i);
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
 int main()
 {
@@ -367,11 +405,11 @@ int main()
 	// char lit[] = "";
 	// size_t len = 23;
 
-	char big[] = "trdst";
+	// char big[] = "  ";
 	char lit[] = "";
-	size_t len = 9;
-	printf("my function:	$%s$\n", ft_strnstr(big, lit, len));
-	printf("or function:	$%s$\n", strnstr(big, lit, len));
+	size_t len = 0;
+	// printf("my function:	$%s$\n", strnstr(lit, 0, len));
+	printf("or function:	$%s$\n", ft_strnstr(lit, 0, len));
 
 	return (0);
 }
