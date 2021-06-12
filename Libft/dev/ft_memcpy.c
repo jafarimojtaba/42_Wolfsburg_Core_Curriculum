@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 14:44:15 by mjafari           #+#    #+#             */
-/*   Updated: 2021/05/31 12:32:54 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/06/12 15:55:39 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	src2 = (unsigned char *)src;
 	c = (long int)n;
 	if (src2 == dest2 || c == 0)
-		return (dest2);
+		return ((void *)dest2);
 	i = 0;
 	while (i < c)
 	{
 		dest2[i] = src2[i];
 		i++;
 	}
-	return (dest2);
+	return ((void *)dest2);
 }
