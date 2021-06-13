@@ -6,54 +6,31 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 23:20:19 by mjafari           #+#    #+#             */
-/*   Updated: 2021/06/11 17:12:26 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/06/13 17:15:51 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*make_str(char *big, char *little, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
+	size_t	little_len;
 
 	i = 0;
+	little_len = ft_strlen(little);
+	if (little_len == 0)
+		return ((char *)big);
 	while (i < len && big[i])
 	{
 		j = 0;
-		if (big[i] == little[j])
-		{
-			while (i < len && little[j])
-			{
-				if (big[i] != little[j])
-					break ;
-				j++;
-				i++;
-			}
-			if (little[j] == '\0')
-				return (&(big[i - j]));
-		}
+		while (big[i + j] && j < little_len && i + j < len
+			&& big[i + j] == little[j])
+			j++;
+		if (j == little_len)
+			return ((char *)big + i);
 		i++;
 	}
 	return (0);
-}
-
-char	*ft_strnstr(const char *big, const char *little, size_t len)
-{
-	char	*b;
-	char	*l;
-	char	*r;
-
-	b = (char *)big;
-	l = (char *)little;
-	if (ft_strlen(little) == 0)
-		return (b);
-	if (len == 0)
-		return (0);
-	if (len > ft_strlen(big))
-		len = ft_strlen(big);
-	if (len < ft_strlen(little))
-		return (0);
-	r = make_str(b, l, len);
-	return (r);
 }
