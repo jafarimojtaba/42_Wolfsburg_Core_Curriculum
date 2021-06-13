@@ -6,7 +6,7 @@
 #    By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/25 00:07:21 by mjafari           #+#    #+#              #
-#    Updated: 2021/06/12 16:15:03 by mjafari          ###   ########.fr        #
+#    Updated: 2021/06/13 17:52:06 by mjafari          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,12 +34,12 @@ BNC_OBJ	=	$(BNC:.c=.o)
 all: $(NAME)
 
 $(NAME):
-	clang -c -Wall -Wextra -Werror $(SRC)
+	$(CC) -c -Wall -Wextra -Werror $(SRC)
 	ar rc $(NAME) $(SRC_OBJ)
 	ranlib $(NAME)
 
 bonus:
-	clang -c -Wall -Wextra -Werror $(BNC) $(SRC)
+	$(CC) -c -Wall -Wextra -Werror $(BNC) $(SRC)
 	ar rc $(NAME) $(BNC_OBJ) $(SRC_OBJ)
 	ranlib $(NAME)
 
@@ -47,20 +47,20 @@ clean:
 	rm -f $(SRC_OBJ) $(BNC_OBJ)
 
 fclean: clean
-	rm -f $(NAME) $(NAME:.a=.so)
+	rm -f $(NAME) $(NAME:.a=.so) myapp
 
 re: fclean all
 
 so:
-	clang -nostartfiles -c -Wall -Wextra -Werror $(SRC) $(BNC)
-	clang -nostartfiles -shared -o libft.so $(SRC_OBJ) $(BNC_OBJ) 
+	$(CC) -nostartfiles -c -Wall -Wextra -Werror $(SRC) $(BNC)
+	$(CC) -nostartfiles -shared -o libft.so $(SRC_OBJ) $(BNC_OBJ) 
 
 test: re
-	clang -Wall -Wextra -Werror ../test/main_test.c libft.a -lbsd
+	$(CC) -Wall -Wextra -Werror ../test/main_test.c libft.a -lbsd -o myapp
 	rm -f $(SRC_OBJ) $(BNC_OBJ)
 	clear
-	./a.out
+	./myapp
 
 debug: $(NAME) bonus
-	clang -g ../test/main_test.c -L. -lft -lbsd
+	$(CC) -g ../test/main_test.c -L. -lft -lbsd
 	./a.out
