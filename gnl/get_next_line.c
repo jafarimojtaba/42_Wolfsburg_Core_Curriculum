@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 11:06:08 by mjpro             #+#    #+#             */
-/*   Updated: 2021/08/06 01:05:35 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/08/06 01:26:05 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (!buf[0])
 	{
-		buf[0] = calloc((BUFFER_SIZE + 1) , sizeof(char));
-		line[0] = calloc((BUFFER_SIZE + 1) , sizeof(char));
+		buf[0] = ft_calloc((BUFFER_SIZE + 1) , sizeof(char));
+		line[0] = ft_calloc((BUFFER_SIZE + 1) , sizeof(char));
 		ret = read(fd, buf[0], BUFFER_SIZE);
 		if (!buf[0] || ret == -1 || !line[0])
 			return (NULL);
@@ -58,7 +58,7 @@ char	*get_next_line(int fd)
 	}
 	else
 	{
-		line[0] = calloc((BUFFER_SIZE + 1) , sizeof(char));
+		line[0] = ft_calloc((BUFFER_SIZE + 1) , sizeof(char));
 		if (!line[0])
 			return (NULL);
 		ft_strcpy(line[0], buf[0]);
@@ -75,7 +75,7 @@ char	*get_next_line(int fd)
 		if (ret == -1)
 			return (NULL);
 		ret = strlen(line[0]);
-		temp = calloc((ret + BUFFER_SIZE + 1) , sizeof(char));
+		temp = ft_calloc((ret + BUFFER_SIZE + 1) , sizeof(char));
 		if (!temp)
 			return (NULL);
 		ft_strcpy(temp, line[0]);

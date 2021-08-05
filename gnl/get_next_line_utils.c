@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 13:00:37 by mjafari           #+#    #+#             */
-/*   Updated: 2021/08/05 23:03:30 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/08/06 01:25:08 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,15 @@ void	*ft_memset(void *str, int c, size_t n)
 	while (i < n)
 		((unsigned char *)str)[i++] = (unsigned char)c;
 	return (str);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(nmemb * size);
+	if (!ptr)
+		return (0);
+	ft_memset(ptr, nmemb, size);
+	return (ptr);
 }
