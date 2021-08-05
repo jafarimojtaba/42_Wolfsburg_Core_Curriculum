@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 11:21:42 by mjafari           #+#    #+#             */
-/*   Updated: 2021/08/05 23:26:56 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/08/06 00:50:50 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(void)
 {
     char *str;
     int fd = open("test.txt", O_RDONLY);
-    for (size_t i = 0; i < 10; i++)
+    for (size_t i = 0; i < 1; i++)
     {
         /* code */
         str = get_next_line(fd);

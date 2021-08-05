@@ -6,14 +6,14 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 11:15:07 by mjafari           #+#    #+#             */
-/*   Updated: 2021/08/05 23:26:16 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/08/06 00:52:22 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # define FD_SIZE 4096
-# define BUFFER_SIZE 1
+# define BUFFER_SIZE 2
 
 # include <stdlib.h>
 # include <stdio.h>
