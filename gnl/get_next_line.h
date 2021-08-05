@@ -6,13 +6,14 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 11:15:07 by mjafari           #+#    #+#             */
-/*   Updated: 2021/08/04 19:59:00 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/08/05 23:26:16 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-// # define FD_SIZE 4096
+# define FD_SIZE 4096
+# define BUFFER_SIZE 1
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -21,7 +22,13 @@
 # include <sys/uio.h>
 # include <unistd.h>
 # include <string.h>
+# include "get_next_line_utils.c"
 
-char    *get_next_line(int fd);
+char	*get_next_line(int fd);
+char	*ft_strcpy(char *dest, char *src);
+char	*ft_strcat(char *dest, char *src);
+void	*ft_memset(void *str, int c, size_t n);
+
+
 
 #endif
