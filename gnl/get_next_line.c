@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:28:18 by mjafari           #+#    #+#             */
-/*   Updated: 2021/08/07 17:56:29 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/08/07 18:32:55 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_buf_to_line(int fd, char buf[BUFFER_SIZE], char *line[1])
 
 char	*get_next_line(int fd)
 {
-	static char	buf[BUFFER_SIZE];
+	static char	buf[BUFFER_SIZE + 1];
 	char		*line[1];
 	int			line_c;
 	int			ret;
