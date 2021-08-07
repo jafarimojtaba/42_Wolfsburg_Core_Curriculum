@@ -6,13 +6,13 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:28:18 by mjafari           #+#    #+#             */
-/*   Updated: 2021/08/07 03:05:22 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/08/07 19:52:57 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-int	ft_check_line(int fd, char buf[fd][BUFFER_SIZE], char *line[1])
+int	ft_check_line(int fd, char *buf[fd], char *line[1])
 {
 	int	i;
 
@@ -34,7 +34,7 @@ int	ft_check_line(int fd, char buf[fd][BUFFER_SIZE], char *line[1])
 	return (0);
 }
 
-int	ft_buf_to_line(int fd, char buf[fd][BUFFER_SIZE], char *line[1])
+int	ft_buf_to_line(int fd, char *buf[fd], char *line[1])
 {
 	int		ret;
 	int		len;
@@ -42,11 +42,12 @@ int	ft_buf_to_line(int fd, char buf[fd][BUFFER_SIZE], char *line[1])
 
 	ret = 1;
 	if (!buf[fd][0])
-		ret = read(fd, &buf[fd], BUFFER_SIZE);
+		ret = read(fd, buf[fd], BUFFER_SIZE);
 	if (buf[fd][0])
 	{
 		len = ft_strlen(line[0]);
 		temp = ft_calloc((BUFFER_SIZE + len + 1), sizeof(char));
+		temp[BUFFER_SIZE + len] = 0;
 		ft_strlcpy(temp, line[0], len + 1);
 		ft_strlcat(temp, buf[fd], BUFFER_SIZE + len + 1);
 		free(line[0]);
@@ -55,28 +56,48 @@ int	ft_buf_to_line(int fd, char buf[fd][BUFFER_SIZE], char *line[1])
 	return (ret);
 }
 
+char	*ft_check_for_free1(int fd, char *buf[fd], int ret, char *line[1])
+{
+	free(line[0]);
+	*line = NULL;
+	if (!buf[fd][0] && ret == 0)
+	{
+		free(buf[fd]);
+		buf[fd] = NULL;
+	}
+	return (NULL);
+}
+
+char	*ft_check_for_free2(int fd, char *buf[fd], int ret, char *line[1])
+{
+	if (!buf[fd][0] && ret == 0)
+	{
+		free(buf[fd]);
+		buf[fd] = NULL;
+	}
+	return (line[0]);
+}
+
 char	*get_next_line(int fd)
 {
-	static char	buf[FD_SIZE][BUFFER_SIZE];
+	static char	*buf[FD_SIZE];
 	char		*line[1];
 	int			line_c;
 	int			ret;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+	if (!buf[fd])
+		buf[fd] = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	line[0] = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	while (1)
 	{
 		ret = ft_buf_to_line(fd, buf, line);
-		if ((!buf[0] || ret == -1) || (*line[0] == 0 && ret == 0))
-		{	
-			free(line[0]);
-			*line = NULL;
-			return (NULL);
-		}
+		if (ret == -1 || (*line[0] == 0 && ret == 0))
+			return (ft_check_for_free1(fd, buf, ret, line));
 		line_c = ft_check_line(fd, buf, line);
 		if (line_c == 1 || ret == 0)
-			return (line[0]);
+			return (ft_check_for_free2(fd, buf, ret, line));
 	}
 	return (NULL);
 }
