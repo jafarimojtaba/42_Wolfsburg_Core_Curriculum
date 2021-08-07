@@ -6,12 +6,11 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:28:54 by mjafari           #+#    #+#             */
-/*   Updated: 2021/08/07 18:26:26 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/08/07 21:47:01 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
