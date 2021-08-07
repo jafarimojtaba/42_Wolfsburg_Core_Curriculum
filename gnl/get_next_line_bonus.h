@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 03:18:36 by mjafari           #+#    #+#             */
-/*   Updated: 2021/08/07 03:32:48 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/08/07 03:18:49 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 # define FD_SIZE 4096
 // # define BUFFER_SIZE 1
 
@@ -22,7 +22,7 @@
 # include <sys/uio.h>
 # include <unistd.h>
 # include <string.h>
-// # include "get_next_line_utils.c"
+// # include "get_next_line_utils_bonus.c"
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
