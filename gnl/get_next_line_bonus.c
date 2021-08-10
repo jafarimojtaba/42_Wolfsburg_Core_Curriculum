@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:28:18 by mjafari           #+#    #+#             */
-/*   Updated: 2021/08/07 19:52:57 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/08/10 08:32:52 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ int	ft_check_line(int fd, char *buf[fd], char *line[1])
 				ft_strlcpy (buf[fd], &line[0][i + 1], BUFFER_SIZE + 1);
 			else
 				ft_bzero (buf[fd], BUFFER_SIZE);
+			if (line[0][i + 1] == '\0')
+			{
+				free(buf[fd]);
+				buf[fd] = NULL;
+			}
 			line[0][i + 1] = '\0';
 			return (1);
 		}
@@ -60,7 +65,7 @@ char	*ft_check_for_free1(int fd, char *buf[fd], int ret, char *line[1])
 {
 	free(line[0]);
 	*line = NULL;
-	if (!buf[fd][0] && ret == 0)
+	if ((!buf[fd][0] && ret == 0 ) || (!buf[fd][0] && ret == -1))
 	{
 		free(buf[fd]);
 		buf[fd] = NULL;
@@ -70,7 +75,7 @@ char	*ft_check_for_free1(int fd, char *buf[fd], int ret, char *line[1])
 
 char	*ft_check_for_free2(int fd, char *buf[fd], int ret, char *line[1])
 {
-	if (!buf[fd][0] && ret == 0)
+	if (buf[fd] && ret == 0)
 	{
 		free(buf[fd]);
 		buf[fd] = NULL;
@@ -85,7 +90,7 @@ char	*get_next_line(int fd)
 	int			line_c;
 	int			ret;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > FD_SIZE || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!buf[fd])
 		buf[fd] = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
