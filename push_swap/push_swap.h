@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 16:06:19 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/14 14:02:04 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/11/15 22:15:53 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	sort_a(t_list **stack_a, t_list **stack_b);
 
 /*sort_b.c*/
 int		b_is_sorted(t_list *stack_x);
-void	sort_b(t_list **stack_a, t_list **stack_b, int chunk[]);
+void	sort_b(t_list **stack_a, t_list **stack_b, int chunk[], int i);
 
 /*sort_utils.c*/
 int		is_b_les_a(t_list *stack_a, t_list *stack_b);

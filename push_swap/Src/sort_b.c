@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 17:16:16 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/15 21:49:59 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/11/15 22:40:33 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	copy_array_b(t_list *stack_b, int *m, int *chunk)
 	free(array);
 }
 
-void	sort_3_b(t_list **stack_a, t_list **stack_b, int m, int size)
+void	sort_3_b(t_list **stack_a, t_list **stack_b, int m, int size, int ch)
 {
 	int	f;
 	int	i;
@@ -59,8 +59,6 @@ void	sort_3_b(t_list **stack_a, t_list **stack_b, int m, int size)
 	while (i < size / 2)
 	{
 		f = (*stack_b)->content;
-		// if (!a_is_sorted(*stack_a) && b_is_sorted(*stack_b))
-		// 	sort_a(stack_a, stack_b);
 		if (f < m)
 		{
 			rx("rb", stack_b);
@@ -72,7 +70,7 @@ void	sort_3_b(t_list **stack_a, t_list **stack_b, int m, int size)
 			i++;
 		}
 	}
-	while (rb > 0)
+	while (rb > 0 && ch > 0)
 	{
 		rrx("rrb", stack_b);
 		rb--;
@@ -84,23 +82,20 @@ void	sort_3_b(t_list **stack_a, t_list **stack_b, int m, int size)
 		i++;
 	}
 	if(a_is_sorted(*stack_a) && ft_lstsize(*stack_b) == 0)
-		{
-			// printf("size stack_a == %d", ft_lstsize(*stack_a));
-			print_stack(*stack_a, *stack_b);
-		free_stack(stack_a, stack_b);
-			exit(1);
-		}
+			return;
 }
 
-void	sort_b(t_list **stack_a, t_list **stack_b, int chunk[])
+void	sort_b(t_list **stack_a, t_list **stack_b, int chunk[], int i)
 {
 	int	m;
 	while (*stack_b && *chunk > 0)
 	{
 		copy_array_b(*stack_b, &m, &chunk[0]);
-		sort_3_b(stack_a, stack_b, m, *chunk);
+		sort_3_b(stack_a, stack_b, m, *chunk, i);
 		chunk--;
 	}
 	if (!a_is_sorted(*stack_a) && b_is_sorted(*stack_b))
+		// {puts("srt_b.c l:100");
 		sort_a(stack_a, stack_b);
+		// puts("srt_b.c l:102");}
 }

@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 16:43:23 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/15 22:05:44 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/11/15 22:26:19 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,18 +140,17 @@ void sort_a(t_list **stack_a, t_list **stack_b)
 		if (chunk[i] == 0)
 		{
 			// puts("sort_a.c l:131");
-			sort_b(stack_a, stack_b, &chunk[i - 1]);
+			sort_b(stack_a, stack_b, &chunk[i - 1], i - 1);
 		}
 		i++;
 	}
 	i--;
 	// puts("sort_a.c l:136");
-	// puts("sort_a.c l:136");
 	if (a_is_sorted(*stack_a) && !b_is_sorted(*stack_b))
 	{
-		// puts("sort_a.c l:138");
-		sort_b(stack_a, stack_b, &chunk[i]);
-		// puts("sort_a.c l:140");
+		puts("sort_a.c l:138");
+		sort_b(stack_a, stack_b, &chunk[i] , i);
+		puts("sort_a.c l:140");
 	}
 	if (a_is_sorted(*stack_a) && b_is_sorted(*stack_b) && is_b_les_a(*stack_a, *stack_b))
 	{
