@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 15:51:31 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/15 22:38:10 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/11/15 23:50:44 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,9 @@ int	main(int argc, char *argv[])
 	stack_b = NULL;
 	if (argc < 3 || !is_valid(argc, argv) || !int_error(argc, argv))
 		return (write(2, "Error\n", 6));
-	// puts("start, push_swap.c l:24");
 	fill_stack(argc, argv, &stack_a);
 	sort_a(&stack_a, &stack_b);
-	// px("pa11", &stack_b, &stack_a);
-	// px("pa11", &stack_b, &stack_a);
-	// px("pa11", &stack_b, &stack_a);
-	// px("pa11", &stack_b, &stack_a);
-	// px("pa11", &stack_b, &stack_a);
-	// px("pa11", &stack_b, &stack_a);
-	// px("pa11", &stack_b, &stack_a);
-	// px("pa11", &stack_b, &stack_a);
-	// px("pa11", &stack_b, &stack_a);
-	// px("pa11", &stack_b, &stack_a);
-
-
-	print_stack(stack_a, stack_b);
+	// print_stack(stack_a, stack_b);
 	free_stack(&stack_a, &stack_b);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:10:14 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/13 17:54:19 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/11/16 00:07:27 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	rx(char *cmd, t_list **stack_x)
 	if (*cmd != '\0')
 	{
 		write(1, cmd, ft_strlen(cmd));
-		write(1, "\n", 2);
+		write(1, "\n", 1);
 	}
 }
 
@@ -62,7 +62,7 @@ void	rrx(char *cmd, t_list **stack_x)
 	if (*cmd != '\0')
 	{
 		write(1, cmd, ft_strlen(cmd));
-		write(1, "\n", 2);
+		write(1, "\n", 1);
 	}
 }
 

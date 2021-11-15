@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 16:06:19 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/15 22:15:53 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/11/15 23:48:46 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 void	fill_stack(int argc, char *argv[], t_list **stack_a);
 void	print_stack(t_list *stack_a, t_list *stack_b);
 void	free_stack(t_list **stack_a, t_list **stack_b);
+void	check_same_poss(t_list **stack_a, t_list **stack_b);
 
 /*error_handeler.c*/
 int		is_valid(int argc, char *argv[]);
@@ -32,7 +33,7 @@ void	sort_a(t_list **stack_a, t_list **stack_b);
 
 /*sort_b.c*/
 int		b_is_sorted(t_list *stack_x);
-void	sort_b(t_list **stack_a, t_list **stack_b, int chunk[], int i);
+void	sort_b(t_list **stack_a, t_list **stack_b, int chunk[]);
 
 /*sort_utils.c*/
 int		is_b_les_a(t_list *stack_a, t_list *stack_b);
@@ -41,7 +42,7 @@ void	swap(int *a, int *b);
 void	bubblesort(int array[], int n);
 
 /*ps_commands.c*/
-void	px(char *cmd, t_list **first, t_list **second);
+void	px(char *cmd, t_list **first, t_list **second, int *i);
 void	sx(char *cmd, t_list *stack_x);
 void	ss(t_list *stack_a, t_list *stack_b);
 

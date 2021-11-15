@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 01:01:42 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/13 18:44:24 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/11/16 00:06:40 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 **push from top of stack first to top of stack second
 */
-void	px(char *cmd, t_list **first, t_list **second)
+void	px(char *cmd, t_list **first, t_list **second, int *i)
 {
 	t_list	*temp;
 
@@ -28,8 +28,9 @@ void	px(char *cmd, t_list **first, t_list **second)
 	if (*cmd != '\0')
 	{
 		write(1, cmd, ft_strlen(cmd));
-		write(1, "\n", 2);
+		write(1, "\n", 1);
 	}
+	(*i)++;
 }
 
 void	sx(char *cmd, t_list *stack_x)
@@ -44,7 +45,7 @@ void	sx(char *cmd, t_list *stack_x)
 	if (*cmd != '\0')
 	{
 		write(1, cmd, ft_strlen(cmd));
-		write(1, "\n", 2);
+		write(1, "\n", 1);
 	}
 }
 
