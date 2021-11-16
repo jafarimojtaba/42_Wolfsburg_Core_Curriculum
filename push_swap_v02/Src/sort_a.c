@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 16:43:23 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/16 16:55:05 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/11/16 18:57:26 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ void	sort_3_a(t_list **stack_a, t_list **stack_b, int m, int size)
 		l = ft_lstlast(*stack_a)->content;
 		if (f > l && f > s && f > m)
 			rx("ra", stack_a);
-		else if (f < s && f <= l && f < m)
-			px("pb", stack_a, stack_b, &i);
-		else if (s < f && s <= l && s < m)
+		else if (s < f && s < m && s <=l)
 			sx("sa", *stack_a);
 		else if (l < s && l < f && l < m)
 			rrx("rra", stack_a);
+		else if (f < s && f <= l && f < m)
+			px("pb", stack_a, stack_b, &i);
 		else if (f == m && i == size - 1)
 			px("pb", stack_a, stack_b, &i);
 		else
@@ -109,12 +109,12 @@ void	sort_a(t_list **stack_a, t_list **stack_b)
 		copy_array_a(*stack_a, &m, &chunk[i]);
 		sort_3_a(stack_a, stack_b, m, chunk[i]);
 		if (chunk[i] == 0)
-			sort_b(stack_a, stack_b, &chunk[i - 1]);
+			sort_b(stack_a, stack_b, &chunk[i - 1], i);
 		i++;
 	}
 	i--;
 	if (a_is_sorted(*stack_a) && !b_is_sorted(*stack_b))
-		sort_b(stack_a, stack_b, &chunk[i]);
+		sort_b(stack_a, stack_b, &chunk[i], i);
 	if (a_is_sorted(*stack_a) && b_is_sorted(*stack_b)
 		&& is_b_les_a(*stack_a, *stack_b))
 		while (*stack_b)

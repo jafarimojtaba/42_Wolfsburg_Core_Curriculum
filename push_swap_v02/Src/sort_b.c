@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 17:16:16 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/15 23:50:09 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/11/16 20:09:35 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ void	copy_array_b(t_list *stack_b, int *m, int *chunk)
 	free(array);
 }
 
-void	sort_3_b(t_list **stack_a, t_list **stack_b, int m, int size)
+void	sort_3_b(t_list **stack_a, t_list **stack_b, int m, int size, int ch)
 {
 	int	f;
+	int	s;
+	int	l;
 	int	i;
 	int	rb;
 
@@ -58,16 +60,26 @@ void	sort_3_b(t_list **stack_a, t_list **stack_b, int m, int size)
 	rb = 0;
 	while (i < size / 2)
 	{
+		check_same_poss(stack_a, stack_b);
 		f = (*stack_b)->content;
-		if (f < m)
-		{
-			rx("rb", stack_b);
-			rb++;
-		}
-		else
+		s = (*stack_b)->next->content;
+		l = ft_lstlast(*stack_b)->content;
+		if ( s > f && s > l && s >m)
+			sx("sb", *stack_b);
+		else if (l > f && l > s && l > m)
+			{
+				rrx("rrb", stack_b);
+				rb--;
+			}
+		else if (f >= m && f > l && f > s)
 			px("pa", stack_b, stack_a, &i);
+		else if (f < m)
+			{
+				rx("rb", stack_b);
+				rb++;
+			}
 	}
-	while (rb > 0)
+	while (rb > 0 && ch > 2)
 	{
 		rrx("rrb", stack_b);
 		rb--;
@@ -79,14 +91,14 @@ void	sort_3_b(t_list **stack_a, t_list **stack_b, int m, int size)
 		return ;
 }
 
-void	sort_b(t_list **stack_a, t_list **stack_b, int chunk[])
+void	sort_b(t_list **stack_a, t_list **stack_b, int chunk[], int i)
 {
 	int	m;
 
 	while (*stack_b && *chunk > 0)
 	{
 		copy_array_b(*stack_b, &m, &chunk[0]);
-		sort_3_b(stack_a, stack_b, m, *chunk);
+		sort_3_b(stack_a, stack_b, m, *chunk, i);
 		chunk--;
 	}
 	if (!a_is_sorted(*stack_a) && b_is_sorted(*stack_b))

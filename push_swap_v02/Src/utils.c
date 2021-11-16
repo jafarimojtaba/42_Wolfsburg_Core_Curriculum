@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 10:48:44 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/15 23:47:24 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/11/16 18:07:01 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void	check_same_poss(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_lstsize(*stack_a) < 2 || ft_lstsize(*stack_b) < 2)
 		return ;
-	if ((*stack_a)->content > (*stack_a)->next->content
-		&& (*stack_b)->content < (*stack_b)->next->content)
+	if ((*stack_a)->next->content < (*stack_a)->content
+		&& (*stack_b)->next->content > (*stack_b)->content )
 		ss(*stack_a, *stack_b);
 	if ((*stack_a)->content > ft_lstlast(*stack_a)->content
 		&& (*stack_b)->content < ft_lstlast(*stack_b)->content)
