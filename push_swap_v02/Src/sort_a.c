@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 16:43:23 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/16 00:07:56 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/11/16 16:55:05 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,24 +74,20 @@ void	sort_3_a(t_list **stack_a, t_list **stack_b, int m, int size)
 	int	i;
 
 	i = 0;
-	while (i < size && ft_lstsize(*stack_a) > 1)
+	while (i < size && ft_lstsize(*stack_a) > 1 && !a_is_sorted(*stack_a))
 	{
 		check_same_poss(stack_a, stack_b);
 		f = (*stack_a)->content;
 		s = (*stack_a)->next->content;
 		l = ft_lstlast(*stack_a)->content;
-		if (f < s && f <= l && f < m)
+		if (f > l && f > s && f > m)
+			rx("ra", stack_a);
+		else if (f < s && f <= l && f < m)
 			px("pb", stack_a, stack_b, &i);
 		else if (s < f && s <= l && s < m)
-		{
 			sx("sa", *stack_a);
-			px("pb", stack_a, stack_b, &i);
-		}
 		else if (l < s && l < f && l < m)
-		{
 			rrx("rra", stack_a);
-			px("pb", stack_a, stack_b, &i);
-		}
 		else if (f == m && i == size - 1)
 			px("pb", stack_a, stack_b, &i);
 		else
