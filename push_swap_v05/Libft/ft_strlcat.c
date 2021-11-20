@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 15:51:31 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/16 21:13:47 by mjafari          ###   ########.fr       */
+/*   Created: 2021/05/21 18:15:02 by mjafari           #+#    #+#             */
+/*   Updated: 2021/06/08 18:16:06 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	size_t	i;
+	size_t	j;
+	size_t	c;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc < 3 || !is_valid(argc, argv) || !int_error(argc, argv))
-		return (write(2, "Error\n", 6));
-	fill_stack(argc, argv, &stack_a);
-	sort_a(&stack_a, &stack_b);
-	// print_stack(stack_a, stack_b);
-	free_stack(&stack_a, &stack_b);
-	return (0);
+	i = ft_strlen(dest);
+	j = ft_strlen(src);
+	if (size < i || size == 0)
+	{
+		return (j + size);
+	}
+	c = i + j;
+	j = 0;
+	while (i < size - 1 && src[j])
+	{
+		dest[i++] = src[j++];
+	}
+	dest[i] = '\0';
+	return (c);
 }

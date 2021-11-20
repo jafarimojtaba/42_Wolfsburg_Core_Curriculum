@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 15:51:31 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/16 21:13:47 by mjafari          ###   ########.fr       */
+/*   Created: 2021/05/26 00:13:48 by mjafari           #+#    #+#             */
+/*   Updated: 2021/05/31 17:24:38 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	int		i;
+	int		j;
+	char	*new_str;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc < 3 || !is_valid(argc, argv) || !int_error(argc, argv))
-		return (write(2, "Error\n", 6));
-	fill_stack(argc, argv, &stack_a);
-	sort_a(&stack_a, &stack_b);
-	// print_stack(stack_a, stack_b);
-	free_stack(&stack_a, &stack_b);
-	return (0);
+	if (!s1 || !s2)
+		return (0);
+	i = ft_strlen(s1);
+	j = ft_strlen(s2);
+	new_str = (char *)malloc(i + j + 1);
+	if (!new_str)
+		return (0);
+	new_str[i + j] = '\0';
+	ft_memmove(new_str, s1, i);
+	ft_memmove(&new_str[i], s2, j);
+	return (new_str);
 }

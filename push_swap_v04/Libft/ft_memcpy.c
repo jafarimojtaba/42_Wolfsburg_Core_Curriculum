@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 15:51:31 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/16 21:13:47 by mjafari          ###   ########.fr       */
+/*   Created: 2021/05/14 14:44:15 by mjafari           #+#    #+#             */
+/*   Updated: 2021/06/12 15:55:39 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	long int		i;
+	long int		c;
+	unsigned char	*dest2;
+	unsigned char	*src2;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc < 3 || !is_valid(argc, argv) || !int_error(argc, argv))
-		return (write(2, "Error\n", 6));
-	fill_stack(argc, argv, &stack_a);
-	sort_a(&stack_a, &stack_b);
-	// print_stack(stack_a, stack_b);
-	free_stack(&stack_a, &stack_b);
-	return (0);
+	dest2 = (unsigned char *)dest;
+	src2 = (unsigned char *)src;
+	c = (long int)n;
+	if (src2 == dest2 || c == 0)
+		return ((void *)dest2);
+	i = 0;
+	while (i < c)
+	{
+		dest2[i] = src2[i];
+		i++;
+	}
+	return ((void *)dest2);
 }

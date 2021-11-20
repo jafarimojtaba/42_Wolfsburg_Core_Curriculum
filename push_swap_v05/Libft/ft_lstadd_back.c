@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 15:51:31 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/16 21:13:47 by mjafari          ###   ########.fr       */
+/*   Created: 2021/05/29 19:33:19 by mjafari           #+#    #+#             */
+/*   Updated: 2021/05/29 19:46:06 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	t_list	*tmp;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc < 3 || !is_valid(argc, argv) || !int_error(argc, argv))
-		return (write(2, "Error\n", 6));
-	fill_stack(argc, argv, &stack_a);
-	sort_a(&stack_a, &stack_b);
-	// print_stack(stack_a, stack_b);
-	free_stack(&stack_a, &stack_b);
-	return (0);
+	if (lst)
+	{
+		if (*lst == NULL)
+			*lst = new;
+		else
+		{
+			tmp = ft_lstlast(*(lst));
+			tmp->next = new;
+		}
+	}
 }

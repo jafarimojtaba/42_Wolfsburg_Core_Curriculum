@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 15:51:31 by mjafari           #+#    #+#             */
-/*   Updated: 2021/11/16 21:13:47 by mjafari          ###   ########.fr       */
+/*   Created: 2021/05/19 15:37:12 by mjafari           #+#    #+#             */
+/*   Updated: 2021/06/01 10:50:04 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+static int	ft_islower(int c)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	return (c >= 'a' && c <= 'z');
+}
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc < 3 || !is_valid(argc, argv) || !int_error(argc, argv))
-		return (write(2, "Error\n", 6));
-	fill_stack(argc, argv, &stack_a);
-	sort_a(&stack_a, &stack_b);
-	// print_stack(stack_a, stack_b);
-	free_stack(&stack_a, &stack_b);
-	return (0);
+int	ft_toupper(int c)
+{
+	if (ft_islower(c))
+	{
+		c -= 32;
+	}
+	return (c);
 }
