@@ -6,7 +6,7 @@
 #    By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/20 22:06:49 by mjafari           #+#    #+#              #
-#    Updated: 2021/12/20 22:26:07 by mjafari          ###   ########.fr        #
+#    Updated: 2021/12/24 11:18:10 by mjafari          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,11 @@ $(NAME_1): $(SERVER_SRCS)
 	clang $(CFLAGS) $(SERVER_SRCS) -L $(LIB_PATH) -lft -o $(NAME_1)
 
 clean:
-	make clean -C $(LIB_PATH)
-	rm -f $(CLIENT_SRCS) $(SERVER_SRCS)
+	make -C $(LIB_PATH) clean
+	rm -f $(NAME) $(NAME_1)
 
 fclean: clean
-	make fclean -C $(LIBPATH)
+	make -C $(LIB_PATH) fclean
 	rm -f $(NAME) $(NAME_1)
 
 re: fclean all
