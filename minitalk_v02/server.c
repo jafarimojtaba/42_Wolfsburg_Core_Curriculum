@@ -6,63 +6,43 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 22:06:08 by mjafari           #+#    #+#             */
-/*   Updated: 2021/12/31 01:36:06 by mjafari          ###   ########.fr       */
+/*   Updated: 2021/12/31 02:42:09 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void usr_handler(int bit, siginfo_t *siginfo, void *context)
+void handler(int sigint, siginfo_t *siginfo, void *context)
 {
-	static int recived = 0;
-
-	static int arr[8];
-	static int i;
-	int c;
-
-	if (i == 0)
-		i = 8;
-	if (bit == SIGUSR1)
-		bit = 1;
-	else
-		bit = 0;
-	arr[--i] = bit;
-	if (i == 0)
-	{
-		c = 0;
-		while (i < 8)
-		{
-			c = c << 1;
-			c = c | arr[i];
-			i++;
-		}
-		write(1, &c, 1);
-		recived++;
-		ft_bzero(arr, 8);
-		if (c == 0)
-		{
-			while (recived > 0)
-			{
-				usleep(400);
-				kill(siginfo->si_pid, SIGUSR1);
-				recived--;
-			}
-			usleep(800);
-			kill(siginfo->si_pid, SIGUSR2);
-			write(1, "\n", 1);
-		}
-	}
 	(void)context;
+
+	static int r;
+	static int j;
+
+	r = r << 1;
+	if (sigint == SIGUSR1)
+		r = r | 1;
+	if (++j == 8)
+	{
+		ft_putchar_fd(r, 1);
+		if (r == 0)
+		{
+			write(1, "\n", 1);
+			kill(siginfo->si_pid, SIGUSR2);
+		}
+		r = 0;
+		j = 0;
+	}
+	kill(siginfo->si_pid, SIGUSR1);
 }
 
-int main(void)
+int main()
 {
 	struct sigaction sa;
-
-	write(1, "Server_PID: ", 12);
+	ft_putstr_fd("Server pid: ", 1);
 	ft_putnbr_fd(getpid(), 1);
-	write(1, "\n", 1);
-	sa.sa_sigaction = usr_handler;
+	ft_putstr_fd("\n", 1);
+	sa.sa_sigaction = handler;
 	sa.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
