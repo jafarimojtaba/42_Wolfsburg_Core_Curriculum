@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 18:07:46 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/12 19:30:12 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/13 18:32:26 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,15 @@ typedef struct s_rules
 	int					nb_eat;
 	int					all_ate;
 	long long			first_time_stamp;
+	int					died;
 }						t_rules;
 
-int	ft_atoi(const char *str);
-void 	mutex_init(t_rules *r);
-void	philo_init(t_rules *r);
-void	rules_init(t_rules *r, char *argv[], int argc);
+int			ft_atoi(const char *str);
+void 		mutex_init(t_rules *r);
+void		philo_init(t_rules *r);
+void		rules_init(t_rules *r, char *argv[], int argc);
 long long	timestamp(void);
+int			check_all_ate(t_philo *ph);
+void		eating(t_philo *ph);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:35:59 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/12 19:30:37 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/13 17:40:40 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ void 	mutex_init(t_rules *r)
 	int	i;
 
 	i = r->nb_philo;
-	while (--i)
+	while (--i > -1)
 	{
 		pthread_mutex_init(&(r->forks[i]), NULL);
 	}
-	pthread_mutex_init(&(r->write), NULL);
 }
 
 void	philo_init(t_rules *r)
@@ -46,7 +45,6 @@ void	rules_init(t_rules *r, char *argv[], int argc)
 
 	i = 0;
 	r->nb_philo = ft_atoi(argv[1]);
-	
 	r->time_die = ft_atoi(argv[2]);
 	r->time_eat = ft_atoi(argv[3]);
 	r->time_sleep = ft_atoi(argv[4]);
@@ -58,4 +56,5 @@ void	rules_init(t_rules *r, char *argv[], int argc)
 	philo_init(r);
 	mutex_init(r);
 	memset(r->f_v, 1, r->nb_philo);
+	r->died = 0;
 }

@@ -6,52 +6,57 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:26:51 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/12 19:33:27 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/13 18:03:08 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+void check_death(t_rules *r)
+{
+	int		i;
 
-void *fork_pick(void*  p)
+	while (r->all_ate < r->nb_philo)
+	{
+		i = 0;
+		while (i < r->nb_philo)
+		{
+			if (timestamp() - (r->philosophers[i].time_last_meal) > r->time_die)
+			{
+				r->died = 1;
+				printf("died\n");
+				usleep(10000);
+				exit(0);
+			}
+			i++;
+		}
+	}
+}
+
+void *philo_thread(void *p)
 {
 	t_philo *ph;
 	t_rules *r;
-	int		i;
+	int		t;
 
-	
 	ph = (t_philo *)p;
 	r = ph->rules;
-	if (r->nb_eat == ph->nb_had_eat && r->nb_eat > 0)
+	t = timestamp() - r->first_time_stamp;
+	while (!(r->died))
 	{
-		r->all_ate += 1;
-		if (r->all_ate == r->nb_eat)
+		if(check_all_ate(ph))
 		{
-			printf("All Philosophers ate their minimum times they should!");
-			exit(0);
+			printf("erroring");
+			break ;
 		}
-		return (NULL);
+		eating(ph);
+		printf("%d %d is sleeping\n", t, ph->id);
+		usleep((r->time_sleep) * 1000);
+		printf("%d %d is thinking\n", t, ph->id);
 	}
-	if (r->f_v[ph->left_fork_id] && r->f_v[ph->right_fork_id])
-	{
-		r->f_v[ph->left_fork_id] = 0;
-		r->f_v[ph->right_fork_id] = 0;
-		i = timestamp() - r->first_time_stamp;
-		pthread_mutex_lock(&(r->forks[ph->left_fork_id]));
-		pthread_mutex_lock(&(r->forks[ph->right_fork_id]));
-		printf("%d %d takes a fork\n", i,  ph->id);
-		printf("%d %d takes a fork\n", i,  ph->id);
-		printf("%d %d is eating\n", i, ph->id);
-		usleep(r->time_eat);
-		ph->time_last_meal = timestamp();
-		ph->nb_had_eat += 1;
-	}
-	if (r->f_v[ph->left_fork_id] == 0 && r->f_v[ph->right_fork_id] == 0)
-	{
-		r->f_v[ph->left_fork_id] = 1;
-		r->f_v[ph->right_fork_id] = 1;
-		pthread_mutex_unlock(&(r->forks[ph->right_fork_id]));
-		pthread_mutex_unlock(&(r->forks[ph->left_fork_id]));
-	}
+	// if(check_all_ate(ph))
+	// 	return (NULL);
+	// eating(ph);
+
 	return (NULL);
 }
 
@@ -67,10 +72,11 @@ int	main(int argc , char *argv[])
 	rules.first_time_stamp = timestamp();
 	while (i < rules.nb_philo)
 	{
-		pthread_create(&(rules.philosophers[i].p), NULL, &fork_pick, &(rules.philosophers[i]));
+		pthread_create(&(rules.philosophers[i].p), NULL, &philo_thread, &(rules.philosophers[i]));
 		i++;
 	}
 	i = 0;
+	check_death(&rules);
 	while (i < rules.nb_philo)
 	{
 		pthread_join(rules.philosophers[i].p, NULL);

@@ -6,13 +6,13 @@
 #    By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 18:20:50 by mjafari           #+#    #+#              #
-#    Updated: 2022/06/12 17:57:18 by mjafari          ###   ########.fr        #
+#    Updated: 2022/06/13 15:20:17 by mjafari          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 INCLUDES = philo.h
-SRC = ft_atoi.c main.c init.c utils.c
+SRC = ft_atoi.c main.c init.c utils.c actions.c
 
 OBJ = $(SRC:.c=.o)
 
