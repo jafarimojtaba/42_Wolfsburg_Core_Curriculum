@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 18:07:46 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/13 18:32:26 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/14 20:42:12 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct s_rules
 {
 	t_philo				philosophers[210];
 	pthread_mutex_t		forks[210];
-	int					f_v[250];
 	pthread_mutex_t		write;
+	int					f_v[210];
 	int					nb_philo;
 	int					time_die;
 	int					time_eat;
@@ -55,6 +55,7 @@ void		philo_init(t_rules *r);
 void		rules_init(t_rules *r, char *argv[], int argc);
 long long	timestamp(void);
 int			check_all_ate(t_philo *ph);
-void		eating(t_philo *ph);
+void		eating(t_philo *ph, int *i);
+void		print_action(t_philo *ph, char *str);
 
 #endif

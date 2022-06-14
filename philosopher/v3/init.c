@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:35:59 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/13 17:40:40 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/14 19:31:45 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void 	mutex_init(t_rules *r)
 	{
 		pthread_mutex_init(&(r->forks[i]), NULL);
 	}
+	pthread_mutex_init(&(r->write), NULL);
 }
 
 void	philo_init(t_rules *r)

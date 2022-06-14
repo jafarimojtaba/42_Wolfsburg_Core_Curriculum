@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:26:51 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/13 18:03:08 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/14 20:47:00 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void check_death(t_rules *r)
 	while (r->all_ate < r->nb_philo)
 	{
 		i = 0;
-		while (i < r->nb_philo)
+		while (i < r->nb_philo && !(r->died))
 		{
-			if (timestamp() - (r->philosophers[i].time_last_meal) > r->time_die)
+			if ((timestamp()) - (r->philosophers[i].time_last_meal)> (r->time_die))
 			{
 				r->died = 1;
-				printf("died\n");
-				usleep(10000);
+				print_action(&r->philosophers[i], "died");
+				usleep(150000);
 				exit(0);
 			}
 			i++;
@@ -37,26 +37,25 @@ void *philo_thread(void *p)
 	t_philo *ph;
 	t_rules *r;
 	int		t;
+	int		i;
 
 	ph = (t_philo *)p;
 	r = ph->rules;
 	t = timestamp() - r->first_time_stamp;
 	while (!(r->died))
 	{
-		if(check_all_ate(ph))
+		// if(check_all_ate(ph))
+		// 	break ;
+		i = 0;
+		eating(ph, &i);
+		if (i && (timestamp() - ph->time_last_meal) > (r->time_die))
 		{
-			printf("erroring");
-			break ;
+			print_action(ph, "is sleeping");
+			usleep((r->time_sleep) * 1000);
 		}
-		eating(ph);
-		printf("%d %d is sleeping\n", t, ph->id);
-		usleep((r->time_sleep) * 1000);
-		printf("%d %d is thinking\n", t, ph->id);
+		print_action(ph, "is thinking");
+		check_death(r);
 	}
-	// if(check_all_ate(ph))
-	// 	return (NULL);
-	// eating(ph);
-
 	return (NULL);
 }
 
@@ -76,7 +75,7 @@ int	main(int argc , char *argv[])
 		i++;
 	}
 	i = 0;
-	check_death(&rules);
+	
 	while (i < rules.nb_philo)
 	{
 		pthread_join(rules.philosophers[i].p, NULL);
