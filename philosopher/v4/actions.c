@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 15:03:38 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/15 11:40:10 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/15 18:03:29 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,49 @@ int	check_all_ate(t_philo *ph)
 	t_rules	*r;
 
 	r = ph->rules;
+	printf("number of all ate is = %d\n", r->all_ate);
 	if (ph->nb_had_eat >= r->nb_eat && r->nb_eat > 0)
 	{
+		if (ph->nb_had_eat == r->nb_eat)
+			pthread_detach(ph->p);
 		r->all_ate += 1;
+		ph->ate_enough = 1;
 		if (r->all_ate >= r->nb_philo)
 		{
-			// printf("All Philosophers ate their minimum times they should!");
-			// usleep(10000);
+			printf("All Philosophers ate their minimum times they should!");
+			usleep(10000);
 			exit(0);
 		}
 		return (1);
 	}
 	else
+	{
 		return (0);
+	}
 }
 
-void	eating(t_philo *ph, int *i)
+void check_death(t_rules *r)
+{
+	int		i;
+
+	while (r->all_ate < r->nb_philo)
+	{
+		i = 0;
+		while (i < r->nb_philo && !(r->died))
+		{
+			if ((timestamp()) - (r->philosophers[i].time_last_meal)> (r->time_die))
+			{
+				r->died = 1;
+				print_action(&r->philosophers[i], "died");
+				usleep(150000);
+				exit(0);
+			}
+			i++;
+		}
+	}
+}
+
+void	eating(t_philo *ph)
 {
 	t_rules	*r;
 	// int		t;
@@ -51,19 +78,18 @@ void	eating(t_philo *ph, int *i)
 	r = ph->rules;
 	if (r->f_v[ph->left_fork_id] && r->f_v[ph->right_fork_id])
 	{
-		pthread_mutex_lock(&(r->forks[ph->left_fork_id]));
-		if(check_all_ate(ph))
-			return;
-		print_action(ph, "has taken a fork");
-		pthread_mutex_lock(&(r->forks[ph->right_fork_id]));
-		print_action(ph, "has taken a fork");
 		r->f_v[ph->left_fork_id] = 0;
 		r->f_v[ph->right_fork_id] = 0;
-		print_action(ph, "is eating");
+		pthread_mutex_lock(&(r->forks[ph->left_fork_id]));
+		printf("philosopher %d takes fork %d\n", ph->id, ph->id);
+		pthread_mutex_lock(&(r->forks[ph->right_fork_id]));
+		printf("philosopher %d takes fork %d\n", ph->id, ph->id + 1);
+		printf("philosopher %d is eating\n", ph->id);
 		usleep((r->time_eat) * 1000);
 		ph->time_last_meal = timestamp();
 		ph->nb_had_eat += 1;
-		*i = 1;
+		if(check_all_ate(ph))
+			return;
 	}
 	if (r->f_v[ph->left_fork_id] == 0 && r->f_v[ph->right_fork_id] == 0)
 	{
