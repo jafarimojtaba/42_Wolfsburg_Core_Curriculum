@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 18:07:46 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/15 17:31:06 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/16 13:51:13 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_rules
 {
 	t_philo				philosophers[210];
 	pthread_mutex_t		forks[210];
-	int					f_v[210];
 	pthread_mutex_t		write;
 	int					nb_philo;
 	int					time_die;

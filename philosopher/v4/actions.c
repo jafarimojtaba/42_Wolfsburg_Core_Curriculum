@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 15:03:38 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/15 18:03:29 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/16 13:52:13 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,8 @@ void check_death(t_rules *r)
 void	eating(t_philo *ph)
 {
 	t_rules	*r;
-	// int		t;
 
 	r = ph->rules;
-	if (r->f_v[ph->left_fork_id] && r->f_v[ph->right_fork_id])
-	{
-		r->f_v[ph->left_fork_id] = 0;
-		r->f_v[ph->right_fork_id] = 0;
 		pthread_mutex_lock(&(r->forks[ph->left_fork_id]));
 		printf("philosopher %d takes fork %d\n", ph->id, ph->id);
 		pthread_mutex_lock(&(r->forks[ph->right_fork_id]));
@@ -90,12 +85,6 @@ void	eating(t_philo *ph)
 		ph->nb_had_eat += 1;
 		if(check_all_ate(ph))
 			return;
-	}
-	if (r->f_v[ph->left_fork_id] == 0 && r->f_v[ph->right_fork_id] == 0)
-	{
-		r->f_v[ph->left_fork_id] = 1;
-		r->f_v[ph->right_fork_id] = 1;
 		pthread_mutex_unlock(&(r->forks[ph->right_fork_id]));
 		pthread_mutex_unlock(&(r->forks[ph->left_fork_id]));
-	}
 }

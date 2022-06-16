@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:26:51 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/15 18:07:37 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/16 14:00:07 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,33 @@ void *philo_thread(void *p)
 	t_philo *ph;
 	t_rules *r;
 	// int		t;
+
 	ph = (t_philo *)p;
 	r = ph->rules;
-	pthread_mutex_lock(&r->forks[202]);
 	// t = timestamp() - r->first_time_stamp;
-	while (!(r->died) && r->all_ate < r->nb_philo && ph->alive && !ph->ate_enough)
-	{
-		if (check_all_ate(ph))
-			break;
+	// while (!(r->died) && r->all_ate < r->nb_philo && ph->alive && !ph->ate_enough)
+	// {
+	pthread_mutex_lock(&(((t_philo *)p)->rules->forks[202]));
+
+		// if (check_all_ate(ph))
+		// 	break;
 		eating(ph);
-		print_action(ph, "is sleeping");
-		usleep((r->time_sleep) * 1000);
-		if ((timestamp() - ph->time_last_meal) < (r->time_die))
-		{
-			print_action(ph, "is thinking");
-		}
-		else
-		{
-			print_action(ph, "is died");
-			exit(0);
-		}
-	}
+		// print_action(ph, "is sleeping");
+		// usleep((r->time_sleep) * 1000);
+		// if ((timestamp() - ph->time_last_meal) < (r->time_die))
+		// {
+		// 	print_action(ph, "is thinking");
+		// }
+		// else
+		// {
+		// 	print_action(ph, "is died");
+		// 	exit(0);
+		// }
+	pthread_mutex_unlock(&(((t_philo *)p)->rules->forks[202]));
+
+	// }
 	// check_death(r);
-	pthread_mutex_unlock(&r->forks[202]);
+
 	return (NULL);
 }
 

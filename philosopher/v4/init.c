@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:35:59 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/15 17:55:38 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/16 13:51:27 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,5 @@ void rules_init(t_rules *r, char *argv[], int argc)
 	r->all_ate = 0;
 	philo_init(r);
 	mutex_init(r);
-	memset(r->f_v, 1, r->nb_philo);
 	r->died = 0;
 }
