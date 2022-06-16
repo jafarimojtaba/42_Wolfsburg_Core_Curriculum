@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:26:51 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/16 14:54:18 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/16 15:07:12 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void *philo_thread(void *p)
 	// while (!(r->died) && r->all_ate < r->nb_philo && ph->alive && !ph->ate_enough)
 	while (i++ < 5)
 	{
-	pthread_mutex_lock(&(((t_philo *)p)->rules->forks[202]));
+	// pthread_mutex_lock(&(((t_philo *)p)->rules->forks[202]));
 
 		// if (check_all_ate(ph))
 		// 	break;
@@ -42,7 +42,7 @@ void *philo_thread(void *p)
 		// 	print_action(ph, "is died");
 		// 	exit(0);
 		// }
-	pthread_mutex_unlock(&(((t_philo *)p)->rules->forks[202]));
+	// pthread_mutex_unlock(&(((t_philo *)p)->rules->forks[202]));
 
 	}
 	// check_death(r);
