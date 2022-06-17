@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 15:03:38 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/16 15:12:54 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/17 11:27:14 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,26 +95,27 @@ void	eating(t_philo *ph)
 	// int		t;
 
 	r = ph->rules;
-	if (r->f_v[ph->left_fork_id] && r->f_v[ph->right_fork_id])
-	{
+	// if (!pthread_mutex_lock(&(r->forks[ph->left_fork_id])) && pthread_mutex_lock(&(r->forks[ph->right_fork_id])))
+	// {
 		pthread_mutex_lock(&(r->forks[ph->left_fork_id]));
 		// if(check_all_ate(ph))
 		// 	return;
 		print_action(ph, "has taken a fork");
 		pthread_mutex_lock(&(r->forks[ph->right_fork_id]));
 		print_action(ph, "has taken a fork");
-		r->f_v[ph->left_fork_id] = 0;
-		r->f_v[ph->right_fork_id] = 0;
+		// r->f_v[ph->left_fork_id] = 0;
+		// r->f_v[ph->right_fork_id] = 0;
 		print_action(ph, "is eating");
 		usleep((r->time_eat) * 1000);
 		ph->time_last_meal = timestamp();
 		ph->nb_had_eat += 1;
-	}
-	if (r->f_v[ph->left_fork_id] == 0 && r->f_v[ph->right_fork_id] == 0)
-	{
-		r->f_v[ph->left_fork_id] = 1;
-		r->f_v[ph->right_fork_id] = 1;
 		pthread_mutex_unlock(&(r->forks[ph->right_fork_id]));
 		pthread_mutex_unlock(&(r->forks[ph->left_fork_id]));
-	}
+	// }
+	// if (r->f_v[ph->left_fork_id] == 0 && r->f_v[ph->right_fork_id] == 0)
+	// {
+	// 	r->f_v[ph->left_fork_id] = 1;
+	// 	r->f_v[ph->right_fork_id] = 1;
+		
+	// }
 }
