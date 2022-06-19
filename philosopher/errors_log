@@ -1,0 +1,9 @@
+[philo-Test #1]: Given 4 310 200 100 arguments to philo, a philosopher should die !
+[philo-Test #5]: Given 2 60 60 60 arguments to philo, the time difference of each death shouldn't be bigger than 10ms !
+[philo-Test #1]: Given 4 310 200 100 arguments to philo, a philosopher should die !
+[philo-Test #2]: Given 4 410 200 200 arguments to philo, no philosopher should die !
+[philo-Test #1]: Given 4 310 200 100 arguments to philo, a philosopher should die !
+[philo-Test #1]: Given 4 310 200 100 arguments to philo, a philosopher should die !
+[philo-Test #1]: Given 4 310 200 100 arguments to philo, a philosopher should die !
+[philo-Test #1]: Given 4 310 200 100 arguments to philo, a philosopher should die !
+[philo-Test #1]: Given 4 310 200 100 arguments to philo, a philosopher should die !

@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 15:03:38 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/19 19:43:14 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/19 21:13:47 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ int	living(t_philo *ph)
 		usleep((r->time_die) * 1000);
 		print_action(ph, "died");
 		exit(0);
-	}
+	}  
 	pthread_mutex_lock(&(r->forks[ph->right_fork_id]));
 	print_action(ph, "has taken a fork");
 	print_action(ph, "is eating");
-	usleep((r->time_eat) * 1000);
+	usleep((r->time_eat) * 1000);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 	pthread_mutex_unlock(&(r->forks[ph->left_fork_id]));
 	pthread_mutex_unlock(&(r->forks[ph->right_fork_id]));
 	return (1);
