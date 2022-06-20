@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:35:59 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/19 18:05:00 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/20 13:20:38 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	mutex_des(t_rules *r)
 	{
 		if (pthread_mutex_destroy(&(r->forks[i])) != 0)
 		{
-			printf("mutex destroy error in forks!\n");
+			printf("mutex destroy error in fork %d\n", i);
 			exit(1);
 		}
 	}
@@ -49,6 +49,21 @@ void	mutex_des(t_rules *r)
 	{
 		printf("mutex destroy error in write!\n");
 		exit(1);
+	}
+}
+
+void	unlock_forks(t_rules *r)
+{
+	int		i;
+	t_philo	*ph;
+
+	i = 0;
+	ph = &(r->philosophers[0]);
+	while (i < r->nb_philo)
+	{
+		pthread_mutex_unlock(&ph[i].rules->forks[i]);
+		pthread_mutex_unlock(&ph[i].rules->forks[i + 1]);
+		i++;
 	}
 }
 
@@ -71,9 +86,6 @@ void	philo_init(t_rules *r)
 
 void	rules_init(t_rules *r, char *argv[], int argc)
 {
-	int	i;
-
-	i = 0;
 	r->nb_philo = ft_atoi(argv[1]);
 	r->time_die = ft_atoi(argv[2]);
 	r->time_eat = ft_atoi(argv[3]);
