@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:26:51 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/20 11:18:33 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/23 18:20:42 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@ void	*philo_thread(void *p)
 	i = 0;
 	ph = (t_philo *)p;
 	r = ph->rules;
-	while (r->all_ate < r->nb_philo && !check_death(r))
+	while (r->all_ate < r->nb_philo && !check_death(ph))
 	{
 		if ((ph->id % 2) && !i)
 			usleep((r->time_eat) * 1000);
 		i = 1;
-		check_death(r);
-		living(ph);
-		sleeping(ph);
+		check_death(ph);
+		if(living(ph))
+			sleeping(ph);
+			
 	}
 	return (NULL);
 }
@@ -69,8 +70,8 @@ int	main(int argc, char *argv[])
 
 	if (argc != 5 && argc != 6)
 		return (0);
-	rules_init(&rules, argv, argc);
 	rules.first_time_stamp = timestamp();
+	rules_init(&rules, argv, argc);
 	ph = &(rules.philosophers[0]);
 	create_thread(&rules);
 	i = 0;

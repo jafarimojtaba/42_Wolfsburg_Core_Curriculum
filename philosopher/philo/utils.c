@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 17:54:31 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/15 12:41:00 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/22 11:41:20 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,13 @@ long long	timestamp(void)
 	return ((t.tv_sec * 1000) + (t.tv_usec / 1000));
 }
 
-int	current_time(t_rules *r)
+int	current_time(t_philo *ph)
 {
-	return (timestamp() - r->first_time_stamp);
+	int t;
+	pthread_mutex_lock(&ph->time);
+	t = timestamp() - ph->first_time_stamp;
+	pthread_mutex_unlock(&ph->time);
+	return (t);
 }
 
 long	ft_atoi(const char *str)

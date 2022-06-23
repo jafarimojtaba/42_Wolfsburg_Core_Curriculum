@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:35:59 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/20 12:20:02 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/23 18:32:02 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	mutex_init(t_rules *r)
 {
 	int	i;
 
-	i = 210;
+	i = r->nb_philo;
 	while (--i > -1)
 	{
 		if (pthread_mutex_init(&(r->forks[i]), NULL) != 0)
@@ -57,6 +57,8 @@ void	philo_init(t_rules *r)
 	int	i;
 
 	i = r->nb_philo;
+	r->philosophers = (t_philo *)malloc(i * sizeof(t_philo));
+	r->forks = (pthread_mutex_t *)malloc(i * sizeof(pthread_mutex_t));
 	while (--i > -1)
 	{
 		r->philosophers[i].id = i;
@@ -66,6 +68,12 @@ void	philo_init(t_rules *r)
 		r->philosophers[i].nb_had_eat = 0;
 		r->philosophers[i].ate_enough = 0;
 		r->philosophers[i].rules = r;
+		r->philosophers[i].first_time_stamp = r->first_time_stamp;
+		if (pthread_mutex_init(&(r->philosophers[i].time), NULL) != 0)
+		{
+			printf("mutex init error in philo time!\n");
+			exit(1);
+		}
 	}
 }
 

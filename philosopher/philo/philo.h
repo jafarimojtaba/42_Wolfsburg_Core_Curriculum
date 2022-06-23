@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 18:07:46 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/20 11:34:39 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/22 11:52:38 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ struct	s_rules;
 typedef struct s_philo
 {
 	pthread_t		p;
+	pthread_mutex_t	time;
 	int				id;
 	int				left_fork_id;
 	int				right_fork_id;
 	long long		time_last_meal;
 	int				nb_had_eat;
 	int				ate_enough;
+	int				first_time_stamp;
 	struct s_rules	*rules;
 }					t_philo;
 
@@ -56,8 +58,8 @@ long long	timestamp(void);
 int			check_all_ate(t_philo *ph);
 int			living(t_philo *ph);
 void		print_action(t_philo *ph, char *str);
-int			current_time(t_rules *r);
-int			check_death(t_rules *r);
+int			current_time(t_philo *ph);
+int			check_death(t_philo *ph);
 void		sleeping(t_philo *ph);
 void		mutex_des(t_rules *r);
 
