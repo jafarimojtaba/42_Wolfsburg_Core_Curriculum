@@ -16,7 +16,7 @@ void	*philo_thread(void *p)
 {
 	t_philo		*ph;
 	t_rules		*r;
-	static int	i;
+	int	i;
 
 	i = 0;
 	ph = (t_philo *)p;
@@ -38,14 +38,16 @@ void	*philo_thread(void *p)
 int	main(int argc, char *argv[])
 {
 	t_rules	rules;
-	t_philo	*ph;
+	pthread_mutex_t main_mutex;
+	pthread_mutex_init(&main_mutex, NULL);
+	// t_philo	*ph;
 
 	if (argc != 5 && argc != 6)
 		return (0);
 	rules.first_time_stamp = timestamp();
-	rules_init(&rules, argv, argc);
+	rules_init(&rules, argv, argc, &main_mutex);
 	// sleep(1);
-	ph = &(rules.philosophers[0]);
+	// ph = &(rules.philosophers[0]);
 	create_thread(&rules);
 	philo_detach(&rules);
 	mutex_des(&rules);

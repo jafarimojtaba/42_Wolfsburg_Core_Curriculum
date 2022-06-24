@@ -17,11 +17,11 @@ int	check_death(t_philo *ph)
 		if ((current_time(ph) - (ph->time_last_meal))
 			>= (ph->rules->time_die))
 		{
-			pthread_mutex_lock(&(ph->rules->life));
-			ph->rules->died = 1;
+			// pthread_mutex_lock(&(ph->rules->life));
+			// ph->rules->died = 1;
 			print_action(ph, "died");
 			exit_free(ph->rules);
-			pthread_mutex_unlock(&(ph->rules->life));
+			// pthread_mutex_unlock(&(ph->rules->life));
 			exit(0);
 		}
 	return (0);

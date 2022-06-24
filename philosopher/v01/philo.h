@@ -58,7 +58,7 @@ typedef struct s_rules
 long		ft_atoi(const char *str);
 void		mutex_init(t_rules *r);
 void		philo_init(t_rules *r);
-void		rules_init(t_rules *r, char *argv[], int argc);
+void		rules_init(t_rules *r, char *argv[], int argc, pthread_mutex_t *m);
 long long	timestamp(void);
 int			check_all_ate(t_rules *ph);
 int			living(t_philo *ph);

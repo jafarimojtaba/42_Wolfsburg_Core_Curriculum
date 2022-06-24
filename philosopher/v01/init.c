@@ -112,8 +112,9 @@ void	philo_init(t_rules *r)
 	}
 }
 
-void	rules_init(t_rules *r, char *argv[], int argc)
+void	rules_init(t_rules *r, char *argv[], int argc, pthread_mutex_t *m)
 {
+	pthread_mutex_lock(m);
 	r->nb_philo = ft_atoi(argv[1]);
 	r->time_die = ft_atoi(argv[2]);
 	r->time_eat = ft_atoi(argv[3]);
@@ -126,4 +127,5 @@ void	rules_init(t_rules *r, char *argv[], int argc)
 	r->died = 0;
 	philo_init(r);
 	mutex_init(r);
+	pthread_mutex_unlock(m);
 }

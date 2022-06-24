@@ -19,7 +19,7 @@ OBJ = $(SRC:.c=.o)
 all: fclean $(NAME)
 
 $(NAME):
-	$(CC) -g -lpthread -Wall -Werror -Wextra $(SRC) -o $(NAME) 
+	clang -g -lpthread -Wall -Werror -Wextra $(SRC) -o $(NAME) -fsanitize=thread
 
 clean: 
 	rm -f $(OBJ)
