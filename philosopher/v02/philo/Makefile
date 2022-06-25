@@ -6,7 +6,7 @@
 #    By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 18:20:50 by mjafari           #+#    #+#              #
-#    Updated: 2022/06/24 20:16:51 by mjafari          ###   ########.fr        #
+#    Updated: 2022/06/25 22:21:03 by mjafari          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJ = $(SRC:.c=.o)
 all: fclean $(NAME)
 
 $(NAME):
-	clang -g -lpthread -Wall -Werror -Wextra $(SRC) -o $(NAME) -fsanitize=thread
+	clang -g -lpthread -Wall -Werror -Wextra $(SRC) -o $(NAME)
 
 clean: 
 	rm -f $(OBJ)
