@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:29:58 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/25 19:25:00 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/27 21:13:37 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+
+struct s_shared;
 
 typedef struct	s_philo
 {
@@ -36,15 +38,24 @@ typedef struct	s_philo
 	int				nb_had_eat;
 	int				flag_ate_enough;
 	int				flag_died;
-	pthread_mutex_t fork;
+	struct s_shared *shared;
 	pthread_mutex_t update;
-	pthread_mutex_t write;
+	pthread_mutex_t meal;
 }				t_philo;
 
+typedef struct	s_shared
+{
+	pthread_mutex_t *fork;
+	pthread_mutex_t write;
+	pthread_mutex_t update;
+	int				flag_die;
+	int				flag_ate;
+}				t_shared;
+
+
 long		ft_atoi(const char *str);
-// void		mutex_init(t_rules *r);
-// void		philo_init(t_rules *r);
-void		philos_init(t_philo *r, char *argv[], int argc, pthread_mutex_t *m);
+void		philos_init(t_philo *ph, t_shared *sh, char *argv[], int argc);
+void		shared_init(t_shared *sh, int s);
 long long	timestamp(void);
 int			check_all_ate(t_philo *ph);
 int			living(t_philo *ph);
@@ -58,6 +69,8 @@ void		sleeping(t_philo *ph);
 void		create_thread(t_philo *ph);
 void		*philo_thread(void *p);
 void 		philo_detach(t_philo *ph);
+void 		*end_thread(void *p);
+void		sim_end_init(t_philo *ph, pthread_t *sim_end);
 // void 		exit_free(t_rules *r);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:40:24 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/25 19:02:52 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/27 21:28:34 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,29 @@ void	create_thread(t_philo *ph)
 	}
 }
 
-void philo_detach(t_philo *ph)
-{
-	int	i;
 
-	i = 0;
-	while (i < ph[0].nb_philos)
-	{
-		if (pthread_detach(ph[i].p) != 0)
-		{
-			printf("could not detach the thread for philosopher %d", i);
-			// exit_free(ph);
-			exit(1);
-		}
-		i += 1;
-	}
-	free(ph);
+void	sim_end_init(t_philo *ph, pthread_t *sim_end)
+{
+	pthread_create(sim_end, NULL, &end_thread, ph);
+	pthread_join(*sim_end, NULL);
 }
+// void philo_detach(t_philo *ph)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i < ph[0].nb_philos)
+// 	{
+// 		if (pthread_detach(ph[i].p) != 0)
+// 		{
+// 			printf("could not detach the thread for philosopher %d", i);
+// 			// exit_free(ph);
+// 			exit(1);
+// 		}
+// 		i += 1;
+// 	}
+// 	free(ph);
+// }
 
 // void exit_free(t_philo *ph)
 // {

@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 15:03:38 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/25 22:10:51 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/27 20:25:18 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	print_action(t_philo *ph, char *str)
 	// pthread_mutex_lock(&ph->update);
 	// ph->start_time += t % 10;
 	// pthread_mutex_unlock(&ph->update);
-	pthread_mutex_lock(&(ph->write));
+	pthread_mutex_lock(&(ph->shared->write));
 	// t = current_time(ph);
 	printf("%d %d %s\n", t, ph->id + 1, str);
-	pthread_mutex_unlock(&(ph->write));
+	pthread_mutex_unlock(&(ph->shared->write));
 }
 
 int	living(t_philo *ph)
@@ -32,7 +32,7 @@ int	living(t_philo *ph)
 
 	if (ph->flag_ate_enough == 1)
 		return (0);
-	pthread_mutex_lock(&(ph[ph->left_fork_id].fork));
+	pthread_mutex_lock(&(ph->shared->fork[ph->left_fork_id]));
 	print_action(ph, "has taken a fork");
 	check_death(ph);
 	if (ph->nb_philos == 1)
@@ -42,7 +42,7 @@ int	living(t_philo *ph)
 		// exit_free(ph->rules);
 		exit(0);
 	}
-	pthread_mutex_lock(&(ph[ph->right_fork_id].fork));
+	pthread_mutex_lock(&(ph->shared->fork[ph->right_fork_id]));
 	print_action(ph, "has taken a fork");
 	print_action(ph, "is eating");
 	pthread_mutex_lock(&(ph->update));
@@ -51,8 +51,8 @@ int	living(t_philo *ph)
 	t = current_time(ph);
 	while (current_time(ph) - t < ph->eat_time)
 		check_death(ph);
-	pthread_mutex_unlock(&(ph[ph->left_fork_id].fork));
-	pthread_mutex_unlock(&(ph[ph->right_fork_id].fork));
+	pthread_mutex_unlock(&(ph->shared->fork[ph->left_fork_id]));
+	pthread_mutex_unlock(&(ph->shared->fork[ph->right_fork_id]));
 	return (1);
 }
 

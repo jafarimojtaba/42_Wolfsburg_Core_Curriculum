@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:19:56 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/25 22:17:13 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/27 20:45:18 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,8 @@ int	check_death(t_philo *ph)
 		if ((t - ((&ph[i])->last_meal_time))
 			>= ((&ph[i])->die_time))
 		{
-			// pthread_mutex_lock(&(ph->rules->life));
-			// ph->rules->died = 1;
 			print_action(ph, "died");
-			// exit_free(ph->rules);
-			// pthread_mutex_unlock(&(ph->rules->life));
-	pthread_mutex_unlock(&ph[i].update);
-
+			pthread_mutex_unlock(&ph[i].update);
 			exit(0);
 		}
 		pthread_mutex_unlock(&ph[i].update);
