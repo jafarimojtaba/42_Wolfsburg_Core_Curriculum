@@ -6,7 +6,7 @@
 #    By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 18:20:50 by mjafari           #+#    #+#              #
-#    Updated: 2022/06/28 20:22:21 by mjafari          ###   ########.fr        #
+#    Updated: 2022/06/28 20:51:10 by mjafari          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME):
-	$(CC) -g -lpthread -Wall -Werror -Wextra $(SRC) -o $(NAME) -fsanitize=thread
+	$(CC) -g -lpthread -Wall -Werror -Wextra $(SRC) -o $(NAME)
 
 clean: 
 	rm -f $(OBJ)

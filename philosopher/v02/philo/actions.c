@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 15:03:38 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/28 20:02:39 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/28 20:49:37 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,11 @@ void	sleeping(t_philo *ph)
 	pthread_mutex_unlock(&(ph->update));
 	if ((ph->nb_had_eat == ph->nb_must_eat) && ph->nb_must_eat > 0)
 	{
-		pthread_mutex_lock(&(ph->update));
+		// pthread_mutex_lock(&(ph->update));
+		pthread_mutex_lock(&ph->meal);
 		ph->flag_ate_enough = 1;
-		pthread_mutex_unlock(&(ph->update));
+		// pthread_mutex_unlock(&(ph->update));
+		pthread_mutex_unlock(&ph->meal);
 	}
 	// if (r->all_ate == r->nb_philo)
 	// {
