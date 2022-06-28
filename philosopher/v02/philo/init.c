@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:35:59 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/27 20:53:44 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/28 19:36:58 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void		shared_init(t_shared *sh, int s)
 		pthread_mutex_init(&sh->fork[i++], NULL);
 	pthread_mutex_init(&sh->write, NULL);
 	pthread_mutex_init(&sh->update, NULL);
+	pthread_mutex_init(&sh->life, NULL);
 	pthread_mutex_lock(&(sh->update));
 	sh->flag_ate = 0;
 	sh->flag_die = 0;
@@ -39,6 +40,8 @@ void	philos_init(t_philo *ph, t_shared *sh, char *argv[], int argc)
 	{
 		pthread_mutex_init(&(ph[i].update), NULL);
 		pthread_mutex_init(&(ph[i].meal), NULL);
+		pthread_mutex_init(&(ph[i].life), NULL);
+		pthread_mutex_init(&(ph[i].time), NULL);
 		pthread_mutex_lock(&ph[i].update);
 		ph[i].die_time = ft_atoi(argv[2]);
 		ph[i].eat_time = ft_atoi(argv[3]);

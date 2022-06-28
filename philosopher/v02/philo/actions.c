@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 15:03:38 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/27 20:25:18 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/28 20:02:39 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int	living(t_philo *ph)
 	pthread_mutex_lock(&(ph->shared->fork[ph->right_fork_id]));
 	print_action(ph, "has taken a fork");
 	print_action(ph, "is eating");
-	pthread_mutex_lock(&(ph->update));
-	ph->last_meal_time = timestamp() - (ph->start_time);
-	pthread_mutex_unlock(&(ph->update));
+	pthread_mutex_lock(&(ph->life));
+	ph->last_meal_time = current_time(ph);
+	pthread_mutex_unlock(&(ph->life));
 	t = current_time(ph);
 	while (current_time(ph) - t < ph->eat_time)
 		check_death(ph);

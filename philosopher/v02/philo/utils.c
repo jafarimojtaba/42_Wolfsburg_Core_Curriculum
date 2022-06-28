@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 17:54:31 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/27 19:40:14 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/28 19:11:02 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ long long	timestamp(void)
 int	current_time(t_philo *ph)
 {
 	int t;
-	pthread_mutex_lock(&ph->update);
+	pthread_mutex_lock(&ph->time);
 	t = timestamp() - (ph->start_time);
-	pthread_mutex_unlock(&ph->update);
+	pthread_mutex_unlock(&ph->time);
 	return (t);
 }
 

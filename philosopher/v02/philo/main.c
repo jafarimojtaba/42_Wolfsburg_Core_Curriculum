@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:26:51 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/27 21:28:58 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/28 20:21:50 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ void	*philo_thread(void *p)
 
 	i = 0;
 	ph = (t_philo *)p;
-	while (!check_death(ph))
+	while (!check_death(ph) && !check_all_ate(ph))
 	{
 		if ((ph->id % 2) && !i)
-		while (((current_time(ph)) - ph->last_meal_time) < ph->eat_time)
+		while ((current_time(ph) - ph->last_meal_time) < ph->eat_time)
 			check_death(ph);
+			// usleep((ph->eat_time) * 1000);
 		i = 1;
 		check_death(ph);
 		if(living(ph))
@@ -31,11 +32,11 @@ void	*philo_thread(void *p)
 	}
 	// while (i < 5)
 	// {
+	// 	pthread_mutex_lock(&ph->update);
 	// 	i++;
-	// puts("hi");
-
+	// 	puts("hi");
+	// 	pthread_mutex_unlock(&ph->update);
 	// }
-	
 	return (NULL);
 }
 
@@ -74,7 +75,7 @@ int	main(int argc, char *argv[])
 {
 	t_philo	*ph;
 	t_shared sh;
-	pthread_t sim_end;
+	// pthread_t sim_end;
 	// pthread_mutex_t mm;
 
 	if (argc != 5 && argc != 6)
@@ -87,8 +88,8 @@ int	main(int argc, char *argv[])
 	// pthread_mutex_unlock(&mm);
 	// sleep(1);
 	// ph = &(rules.philosophers[0]);
-	create_thread(ph);
-	sim_end_init(ph, &sim_end);
+	create_thread(ph, ft_atoi(argv[1]));
+	// sim_end_init(ph, &sim_end);
 	// sleep(10);
 	// philo_detach(ph);
 	// mutex_des(&rules);
