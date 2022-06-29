@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:29:58 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/29 17:30:16 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/29 22:24:02 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct	s_philo
 
 typedef struct	s_shared
 {
+	t_philo			*philo;
 	pthread_mutex_t *fork;
 	pthread_mutex_t write;
 	pthread_mutex_t update;
@@ -68,7 +69,7 @@ int			check_death(t_philo *ph);
 void		sleeping(t_philo *ph);
 // void		mutex_des(t_rules *r);
 // void		exit_check(t_rules *r);
-// int 		sim_end(t_rules *r);
+int 		sim_end(t_philo *ph);
 void		create_thread(t_philo *ph, int s);
 void		*philo_thread(void *p);
 void 		philo_detach(t_philo *ph);

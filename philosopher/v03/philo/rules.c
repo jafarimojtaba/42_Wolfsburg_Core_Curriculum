@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:19:56 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/29 17:43:51 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/29 19:15:06 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,9 @@ int check_all_ate(t_philo *ph)
 	}
 	if (c == ph->nb_philos)
 	{
-		// printf("ate enough!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 		pthread_mutex_unlock(&ph->meal);
-		// pthread_mutex_lock(&ph->shared->update);
 		exit(0);
 	}
-		// r->all_ate = 1;
 	pthread_mutex_unlock(&ph->meal);
-	// if (c == r->nb_philo)
-	// 	return(1);
 	return(0);
 }
-
-// int sim_end(t_rules *r)
-// {
-// 	if (r->all_ate || r->died)
-// 		return (1);
-// 	return (0);
-// }

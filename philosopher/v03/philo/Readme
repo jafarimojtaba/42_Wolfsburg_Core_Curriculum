@@ -1,0 +1,1 @@
+program works fine with no data racing and v04 is for working on memory leaks and return to main without using exit()

@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:29:58 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/29 17:30:16 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/30 00:32:24 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <unistd.h>
 # include <string.h>
 
-struct s_shared;
+struct	s_shared;
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	pthread_t		p;
 	int				nb_philos;
@@ -38,23 +38,23 @@ typedef struct	s_philo
 	int				nb_had_eat;
 	int				flag_ate_enough;
 	int				flag_died;
-	struct s_shared *shared;
-	pthread_mutex_t update;
-	pthread_mutex_t meal;
-	pthread_mutex_t life;
-	pthread_mutex_t time;
-}				t_philo;
+	struct s_shared	*shared;
+	pthread_mutex_t	update;
+	pthread_mutex_t	meal;
+	pthread_mutex_t	life;
+	pthread_mutex_t	time;
+}					t_philo;
 
-typedef struct	s_shared
+typedef struct s_shared
 {
-	pthread_mutex_t *fork;
-	pthread_mutex_t write;
-	pthread_mutex_t update;
-	pthread_mutex_t life;
+	t_philo			philo[410];
+	pthread_mutex_t	fork[200];
+	pthread_mutex_t	write;
+	pthread_mutex_t	update;
+	pthread_mutex_t	life;
 	int				flag_die;
 	int				flag_ate;
-}				t_shared;
-
+}					t_shared;
 
 long		ft_atoi(const char *str);
 void		philos_init(t_philo *ph, t_shared *sh, char *argv[], int argc);
@@ -62,18 +62,16 @@ void		shared_init(t_shared *sh, int s);
 long long	timestamp(void);
 int			check_all_ate(t_philo *ph);
 int			living(t_philo *ph);
-void		print_action(t_philo *ph, char *str);
+void		print_action(t_philo *ph, char *str, int t);
 int			current_time(t_philo *ph);
 int			check_death(t_philo *ph);
 void		sleeping(t_philo *ph);
-// void		mutex_des(t_rules *r);
-// void		exit_check(t_rules *r);
-// int 		sim_end(t_rules *r);
+int			sim_end(t_philo *ph);
 void		create_thread(t_philo *ph, int s);
 void		*philo_thread(void *p);
-void 		philo_detach(t_philo *ph);
-void 		*end_thread(void *p);
+void		philo_detach(t_philo *ph);
+void		*end_thread(void *p);
 void		sim_end_init(t_philo *ph, pthread_t *sim_end);
-void 		exit_free(t_philo *ph);
+void		exit_free(t_philo *ph);
 
 #endif

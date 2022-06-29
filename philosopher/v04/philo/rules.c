@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:19:56 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/29 17:43:51 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/29 22:42:04 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,13 @@ int	check_death(t_philo *ph)
 		if ((t - ((&ph[i])->last_meal_time))
 			>= ((&ph[i])->die_time))
 		{
+			// if (!sim_end(ph))
 			print_action(ph, "died");
-			pthread_mutex_unlock(&ph[i].life);
-			exit(0);
+			// pthread_mutex_unlock(&ph[i].life);
+			// exit(0);
+			pthread_mutex_lock(&ph->shared->update);
+			ph->shared->flag_die = 1;
+			pthread_mutex_unlock(&ph->shared->update);
 		}
 		pthread_mutex_unlock(&ph[i].life);
 		i++;
@@ -52,21 +56,26 @@ int check_all_ate(t_philo *ph)
 	}
 	if (c == ph->nb_philos)
 	{
-		// printf("ate enough!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
-		pthread_mutex_unlock(&ph->meal);
-		// pthread_mutex_lock(&ph->shared->update);
-		exit(0);
+		// pthread_mutex_unlock(&ph->meal);
+		// exit(0);
+		pthread_mutex_lock(&ph->shared->update);
+		ph->shared->flag_ate = 1;
+		pthread_mutex_unlock(&ph->shared->update);
 	}
-		// r->all_ate = 1;
 	pthread_mutex_unlock(&ph->meal);
-	// if (c == r->nb_philo)
-	// 	return(1);
 	return(0);
 }
 
-// int sim_end(t_rules *r)
-// {
-// 	if (r->all_ate || r->died)
-// 		return (1);
-// 	return (0);
-// }
+int sim_end(t_philo *ph)
+{
+	pthread_mutex_lock(&ph->shared->update);
+	if(ph->shared->flag_ate || ph->shared->flag_die)
+	{
+		pthread_mutex_unlock(&ph->shared->update);
+		return (7);
+	}
+	pthread_mutex_unlock(&ph->shared->update);
+	if (!check_all_ate(ph) && !check_death(ph))
+		return (0);
+	return (7);
+}

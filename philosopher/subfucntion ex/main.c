@@ -37,5 +37,7 @@ int main(void)
 	pthread_create(&p2.p, NULL, &routine, &p1);
 	pthread_join(p1.p, NULL);
 	pthread_join(p2.p, NULL);
-	printf("%d",p1.shared->i)
+	printf("%d",p1.shared->i);
+	pthread_detach(p1.p);
+	pthread_detach(p2.p);
 }

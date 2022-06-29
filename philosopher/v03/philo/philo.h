@@ -6,7 +6,7 @@
 /*   By: mjafari <mjafari@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:29:58 by mjafari           #+#    #+#             */
-/*   Updated: 2022/06/29 17:30:16 by mjafari          ###   ########.fr       */
+/*   Updated: 2022/06/29 17:45:00 by mjafari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct	s_philo
 
 typedef struct	s_shared
 {
+	t_philo			*philo;
 	pthread_mutex_t *fork;
 	pthread_mutex_t write;
 	pthread_mutex_t update;
